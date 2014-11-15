@@ -10,7 +10,7 @@ RSpec.describe PostersController, :type => :controller do
       end
     end
 
-    context "term:'end', categories: [], page: 1, per_page: 10", focus: true do
+    context "term:'end', categories: [], page: 1, per_page: 10" do
       it "return all posters that have 'end' in description" do
         posters_with_term = ["kend", "blended"].map{|desc| FactoryGirl.create :poster, description: desc}
         posters_without_term = ["enk", "blenked"].map{|desc| FactoryGirl.create :poster, description: desc}
