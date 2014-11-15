@@ -5,7 +5,7 @@ class Poster < ActiveRecord::Base
   def self.filter(term: nil, category: nil)
     query = self
     if term
-      query = QueryUtils.where_attr_like(query, :description, term)
+      query = QueryUtils.where_attr_like(query, QueryUtils.concatenate_attrs(:description, :title), term)
     end
     if category
       query = query.joins(:categories).where(categories_posters: {category_id: category})

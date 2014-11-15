@@ -6,6 +6,17 @@ module QueryUtils
     adapter == :postgresql
   end
 
+  def concatenate_attrs(*attrs)
+    if QueryUtils.postgresql?
+      attrs.map!{|attr| "COALESCE(#{attr}, '')"}
+      concat = "(#{attrs.join(" || ")})"
+    else
+      attrs.map!{|attr| "IFNULL(#{attr}, '')"}
+      concat = "CONCAT(#{attrs.join(",")})"
+    end
+    concat
+  end
+
   def where_attr_like(query, attr, term)
     if postgresql?
       query.where("#{attr} ilike ?", "%#{term}%")
