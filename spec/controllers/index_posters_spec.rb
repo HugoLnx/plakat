@@ -18,5 +18,28 @@ RSpec.describe PostersController, :type => :controller do
         expect(assigns(:posters)).to be == posters_with_term
       end
     end
+
+    context "term:'', category: 1, page: 1, per_page: 10" do
+      it "return all posters that have at least one of those categories" do
+        categories = FactoryGirl.create_list(:category, 3)
+        selected = categories.first
+        unselecteds = categories - [selected]
+
+        posters_with_selected_categories = [
+          FactoryGirl.create(:poster, categories: [selected]),
+          FactoryGirl.create(:poster, categories: [selected, unselecteds.first]),
+          FactoryGirl.create(:poster, categories: [unselecteds.last, selected])
+        ]
+
+        posters_without_selected_categories = [
+          FactoryGirl.create(:poster, categories: unselecteds),
+          FactoryGirl.create(:poster, categories: []),
+          FactoryGirl.create(:poster, categories: [unselecteds.first])
+        ]
+
+        get :index, term: '', category: selected.id, page: 1, per_page: 10, format: 'json'
+        expect(assigns(:posters)).to be == posters_with_selected_categories
+      end
+    end
   end
 end
