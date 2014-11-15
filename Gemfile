@@ -17,6 +17,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem Login User
 gem 'devise'
 
+# gem pagination
+gem 'kaminari'
+
 gem 'rspec'
 gem "interactive_editor"
 
