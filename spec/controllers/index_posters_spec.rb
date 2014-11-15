@@ -42,7 +42,7 @@ RSpec.describe PostersController, :type => :controller do
       end
     end
 
-    context "term:'end', category: 1, page: 1, per_page: 10", focus: true do
+    context "term:'end', category: 1, page: 1, per_page: 10" do
       it "return all posters that have the category and the term in description" do
         categories = create_list(:category, 3)
         selected = categories.first
