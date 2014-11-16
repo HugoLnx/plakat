@@ -1,6 +1,8 @@
 class Poster < ActiveRecord::Base
-  has_and_belongs_to_many:categories 
-  belongs_to:user
+  has_and_belongs_to_many :categories 
+  belongs_to :user
+
+  mount_uploader :ref_imagem, PosterImageUploader
   
   def self.filter(term: nil, category: nil)
     query = self

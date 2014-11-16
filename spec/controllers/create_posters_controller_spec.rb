@@ -24,7 +24,7 @@ RSpec.describe PostersController do
           visibility_description: visibility_description,
           visibility_date_event: visibility_date_event,
           theme: theme,
-          image: image
+          ref_imagem: image
         },
         format: :json
 
@@ -39,6 +39,7 @@ RSpec.describe PostersController do
 
     it "saves the poster in database" do
       poster = Poster.first
+      expect(poster).to_not be_nil
       expect(poster.title).to be == title
       expect(poster.description).to be == description
       expect(poster.date_event).to be == date_event
@@ -47,7 +48,7 @@ RSpec.describe PostersController do
       expect(poster.visibility_description).to be == visibility_description
       expect(poster.visibility_date_event).to be == visibility_date_event
       expect(poster.theme).to be == theme
-      #expect(poster.image).to be == image
+      expect(poster.ref_imagem).to_not be_nil
     end
   end
 end

@@ -17,6 +17,14 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem Login User
 gem 'devise'
 
+gem 'carrierwave'
+
+gem 'aws-sdk'
+
+gem 'fog'
+
+gem 'mini_magick'
+
 # gem pagination
 gem 'kaminari'
 
