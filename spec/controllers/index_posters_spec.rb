@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe PostersController, :type => :controller do
+  describe "GET show" do
+    context "id: 1" do
+      it "return poster with id = 1" do
+        posters = FactoryGirl.create(:poster, :id => 1)
+        get :show , id: 1, format: 'json'
+        expect(assigns(:poster)).to be == posters
+      end
+    end
+  end 
+
   describe "GET index" do
     context "term:'', categories: [], page: 1, per_page: 2" do
       it "return first 2 posters of any category" do
@@ -64,5 +74,27 @@ RSpec.describe PostersController, :type => :controller do
         expect(assigns(:posters)).to be == selected_posters
       end
     end
+
+    context "term:'', categories: [], page: 1, per_page: 2" do
+      it "return 1 poster not expired" do
+        poster_expired     = FactoryGirl.create(:poster, :date_expiration => Time.now - 5.day)
+        poster_not_expired = FactoryGirl.create(:poster, :date_expiration => Time.now + 5.day)
+        posters = [poster_not_expired] + [poster_expired]
+        get :index , term: '', categories: [], page: 1, per_page: 2, format: 'json'
+        expect(assigns(:posters)).to be == posters.first(1)
+      end
+    end
+
+
+    context "term:'', categories: [], page: 1, per_page: 2" do
+      it "return 1 poster that is not disabled" do
+        poster_disabled         = FactoryGirl.create(:poster, :disabled => true)
+        poster_not_disabled     = FactoryGirl.create(:poster, :disabled => false)
+        posters = [poster_not_disabled] + [poster_disabled]
+        get :index , term: '', categories: [], page: 1, per_page: 2, format: 'json'
+        expect(assigns(:posters)).to be == posters.first(1)
+      end
+    end
+
   end
 end
