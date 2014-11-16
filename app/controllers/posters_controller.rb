@@ -12,6 +12,8 @@ class PostersController < ApplicationController
 
   def create
     poster = Poster.new poster_params
+    poster.date_expiration = Time.now + 30.days
+    poster.disabled = false
     respond_to do |format|
       if poster.save
         #PosterCreationNotifier.notify(email: params[:email], poster: poster).deliver!
