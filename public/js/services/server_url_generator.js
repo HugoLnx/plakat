@@ -3,7 +3,7 @@
 
   app.factory("ServerUrlGenerator", [
   "$http", "HttpUtils", function($http, httpUtils) {
-    var host = "http://ec2-54-94-182-59.sa-east-1.compute.amazonaws.com/";
+    var host = "http://www.plakat.com.br/";
     return {
       posters: {
         index: function(term, category){

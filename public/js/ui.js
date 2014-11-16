@@ -13,10 +13,10 @@ var logoFinalHeight = 25;
 var modalAnimating = false;
 $(window).scrollTop(0);
 
-/*
+
 setInterval(function() {
     $('#categoriesMenu').css({top: $('#titleBar').position().top + $('#titleBar').outerHeight() + "px", left: $('#categories a').position().left});
-    */
+
     if ($("#titleBar").css('position') != "fixed")
     {
         $('#categoriesMenu').css({position:"absolute"});
