@@ -14,7 +14,7 @@ class PostersController < ApplicationController
     poster = Poster.new poster_params
     respond_to do |format|
       if poster.save
-        PosterCreationNotifier.notify(email: params[:email], poster: poster).deliver!
+        #PosterCreationNotifier.notify(email: params[:email], poster: poster).deliver!
         format.json{ head :ok }
         format.html{redirect_to "/"}
       else
