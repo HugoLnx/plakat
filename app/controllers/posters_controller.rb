@@ -9,4 +9,22 @@ class PostersController < ApplicationController
     end
   end
 
+  def create
+    poster = Poster.new poster_params
+    respond_to do |format|
+      if poster.save
+        format.json{ head :ok }
+        PosterCreationNotifier.notify.deliver!
+      else
+        format.json{ render "errors" }
+      end
+    end
+  end
+
+private
+  def poster_params
+    params.require(:poster).permit(:title, :description, :date_event,
+      :date_expiration, :visibility_title, :visibility_description,
+      :visibility_date_event, :theme)
+  end
 end
