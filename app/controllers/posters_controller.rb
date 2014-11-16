@@ -16,6 +16,7 @@ class PostersController < ApplicationController
       if poster.save
         PosterCreationNotifier.notify(email: params[:email], poster: poster).deliver!
         format.json{ head :ok }
+        format.html{redirect_to "/"}
       else
         @errors = poster.errors
         format.json{ render "errors" }
