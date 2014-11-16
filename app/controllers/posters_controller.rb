@@ -11,12 +11,12 @@ class PostersController < ApplicationController
 
   def create
     poster = Poster.new poster_params
-    poster.ref_imagem.enable_processing = true
     respond_to do |format|
       if poster.save
+        PosterCreationNotifier.notify(email: params[:email], poster: poster).deliver!
         format.json{ head :ok }
-        PosterCreationNotifier.notify.deliver!
       else
+        @errors = poster.errors
         format.json{ render "errors" }
       end
     end

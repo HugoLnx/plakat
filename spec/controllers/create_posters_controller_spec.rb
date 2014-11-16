@@ -50,5 +50,7 @@ RSpec.describe PostersController do
       expect(poster.theme).to be == theme
       expect(poster.ref_imagem).to_not be_nil
     end
+
+    it "return a json of errors when poster are invalid"
   end
 end
