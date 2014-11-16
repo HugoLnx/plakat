@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="3966.3311"
+   height="800"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3880">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3882" />
+      <stop
+         id="stop3918"
+         offset="0.5"
+         style="stop-color:#000000;stop-opacity:0;" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop3884" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3880"
+       id="linearGradient3886"
+       x1="253.58795"
+       y1="226.93228"
+       x2="228.21518"
+       y2="2457.8892"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3880"
+       id="linearGradient3916"
+       gradientUnits="userSpaceOnUse"
+       x1="253.58795"
+       y1="226.93228"
+       x2="228.21518"
+       y2="2457.8892"
+       gradientTransform="matrix(1,0,0,0.98910638,0,-0.61412766)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.088388348"
+     inkscape:cx="1460.7845"
+     inkscape:cy="655.58981"
+     inkscape:document-units="px"
+     inkscape:current-layer="g3865"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showborder="true"
+     inkscape:showpageshadow="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(1315.6008,1213.8421)">
+    <g
+       id="g3865"
+       transform="translate(1357.645,950.35151)"
+       inkscape:export-filename="C:\Users\Haz\Google Drive\criaTIvo\Plakat\Identidade Visual\Logo\logo.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         style="font-size:840.81396484px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#e8117f;fill-opacity:1;stroke:none;font-family:Sans"
+         id="text3001">
+        <path
+           d="m -1601.7286,-1670.1768 0,204.8663 -138.7672,0 0,-597.7662 228.2679,0 c 70.8886,6e-4 127.1344,18.0649 168.7376,54.1931 41.6022,36.1292 62.4036,83.6165 62.4041,142.4621 -5e-4,58.8464 -20.8019,106.2653 -62.4041,142.2568 -41.6032,35.9921 -97.849,53.9881 -168.7376,53.9879 z m 0,-106.744 89.5007,0 c 30.107,3e-4 53.0979,-8.2792 68.973,-24.8385 15.8744,-16.5586 23.8118,-37.839 23.8121,-63.8411 -3e-4,-26.5487 -7.8693,-48.308 -23.6068,-65.278 -15.7382,-16.9691 -38.7976,-25.4539 -69.1783,-25.4544 l -89.5007,0 z"
+           style="font-variant:normal;font-stretch:normal;fill:#e8117f;font-family:Roboto Bk;-inkscape-font-specification:Roboto Bk"
+           id="path3929"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m -1064.7244,-1572.0545 256.59605,0 0,106.744 -395.36325,0 0,-597.7662 138.7672,0 z"
+           style="font-variant:normal;font-stretch:normal;fill:#e8117f;font-family:Roboto Bk;-inkscape-font-specification:Roboto Bk"
+           id="path3931"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m -420.97624,-1581.4972 -177.76975,0 -34.48651,116.1867 -146.15711,0 195.013,-597.7662 74.31022,0 0,0.4105 0.41055,-0.4105 74.31022,0 195.42356,597.7662 -146.15712,0 z m -145.74656,-106.744 113.72337,0 -55.8353,-185.5703 -2.46332,0 z"
+           style="font-variant:normal;font-stretch:normal;fill:#e8117f;font-family:Roboto Bk;-inkscape-font-specification:Roboto Bk"
+           id="path3933"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m -19.454686,-1705.0739 -38.592047,0 0,239.7634 -138.767147,0 0,-597.7662 138.767147,0 0,234.0156 28.738758,0 135.072165,-234.0156 174.48532,0 -188.033591,271.7865 204.045181,325.9797 -178.1803,0 z"
+           style="font-variant:normal;font-stretch:normal;fill:#e8117f;font-family:Roboto Bk;-inkscape-font-specification:Roboto Bk"
+           id="path3935"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 653.03218,-1581.4972 -177.76975,0 -34.48651,116.1867 -146.15711,0 195.013,-597.7662 74.31022,0 0,0.4105 0.41056,-0.4105 74.31021,0 195.42356,597.7662 -146.15711,0 z m -145.74656,-106.744 113.72338,0 -55.83531,-185.5703 -2.46332,0 z"
+           style="font-variant:normal;font-stretch:normal;fill:#e8117f;font-family:Roboto Bk;-inkscape-font-specification:Roboto Bk"
+           id="path3937"
+           inkscape:connector-curvature="0" />
+        <path
+           d="m 1293.0853,-1956.3328 -158.0632,0 0,491.0223 -138.76711,0 0,-491.0223 -155.1893,0 0,-106.7439 452.01961,0 z"
+           style="font-variant:normal;font-stretch:normal;fill:#e8117f;font-family:Roboto Bk;-inkscape-font-specification:Roboto Bk"
+           id="path3939"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g3812"
+         transform="translate(254.8428,-1027.5532)">
+        <path
+           id="rect2997"
+           transform="translate(-2673.2761,-2182.8279)"
+           d="m -254.8125,1046.1875 0,800 800,0 0,-800 -800,0 z m 153.9375,120 492.09375,0 c 18.80338,0 33.96875,15.1341 33.96875,33.9375 l 0,352.125 c 0,18.8034 -15.16537,33.9375 -33.96875,33.9375 l -371.03125,0 -155,180 0,-213.9375 0,-65.0625 0,-287.0625 c 0,-18.8034 15.13412,-33.9375 33.9375,-33.9375 z"
+           style="fill:#e8117f;fill-opacity:1;stroke:none"
+           inkscape:connector-curvature="0" />
+        <rect
+           style="fill:#e8117f;fill-opacity:1;stroke:none"
+           id="rect2999-7"
+           width="250"
+           height="180"
+           x="-2653.1033"
+           y="-896.64392" />
+      </g>
+    </g>
+  </g>
+</svg>
