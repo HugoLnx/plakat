@@ -6,7 +6,7 @@ class PostersController < ApplicationController
       .filter(term: params[:term], category: params[:category])
       .where("date_expiration >= ? AND posters.disabled = ? ", Time.now, false )
     respond_to do |format|
-      format.json{ render json: @posters , :only => [:title , :description, :date_event] }
+      format.json{ render json: @posters , :only => [:title , :description, :date_event, :ref_imagem] }
     end
   end
 

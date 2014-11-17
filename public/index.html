@@ -67,7 +67,7 @@
 <div id="posters" ng-controller="PostersListController as postersCtrl">
   <div class="media-container" ng-repeat="poster in postersCtrl.posters">
     <a href="#">
-      <div class="poster">
+      <div class="poster" style="background-image: url({{poster.ref_imagem.url}});">
         <div class="text-container">
           <span class="title">{{poster.title}}</span>
           <span class="description">{{poster.description}}</span>
