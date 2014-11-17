@@ -70,7 +70,7 @@
       <div class="poster" style="background-image: url({{poster.ref_imagem.url}});">
         <div class="text-container">
           <span class="title">{{poster.title}}</span>
-          <span class="description">{{poster.description}}</span>
+          <span class="description">{{poster.description | limitTo : 250}}</span>
         </div>
       </div>
     </a>
