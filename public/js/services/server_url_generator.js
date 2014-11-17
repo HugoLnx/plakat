@@ -3,7 +3,7 @@
 
   app.factory("ServerUrlGenerator", [
   "$http", "HttpUtils", function($http, httpUtils) {
-    var host = "http://localhost:3000/";
+    var host = "http://www.plakat.com.br/";
     return {
       posters: {
         index: function(term, category){
