@@ -15,17 +15,6 @@ $(window).scrollTop(0);
 
 
 setInterval(function() {
-    $('#categoriesMenu').css({top: $('#titleBar').position().top + $('#titleBar').outerHeight() + "px", left: $('#categories a').position().left});
-
-    if ($("#titleBar").css('position') != "fixed")
-    {
-        $('#categoriesMenu').css({position:"absolute"});
-    }
-    else
-    {
-        $('#categoriesMenu').css({position:"fixed"});
-    }
-    
     var cacete = $('#titleBar').offset().top + $('#titleBar').outerHeight();
     
     if ($('.plak-modal-edit').css('visibility') == 'visible' && !modalAnimation && $('.plak-modal-edit').position().top > cacete )
