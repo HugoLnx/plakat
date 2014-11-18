@@ -44,6 +44,11 @@ class PostersController < ApplicationController
     end
   end
 
+  def new
+    @poster = Poster.new
+    render :new, layout: false
+  end
+
 private
   def poster_params
     params.require(:poster).permit(:title, :description, :date_event,

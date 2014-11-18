@@ -7,10 +7,10 @@
 <title>Plakat</title>
 
 <link href='https://fonts.googleapis.com/css?family=Roboto:300,900,400' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/ui.js"></script>
+<script type="text/javascript" src="/js/ui.js"></script>
 
 </head>
 
@@ -20,7 +20,7 @@
     <div id="statusBar">
         <div class="media-container">
             <div id="logo">
-                <h1><a href="index.html"><img src="img/logo.svg" alt="Plakat" /></a></h1>
+                <h1><a href="index.html"><img src="/img/logo.svg" alt="Plakat" /></a></h1>
             </div>
         </div>
     </div>
@@ -67,12 +67,12 @@
 <div id="posters">
     <div class="media-controller">
         <div class="poster-publish">
-            <form id="frm-pub-poster" name="frm-pub-poster" action="/posters" method="POST" >
-                <input type="text" id="title-poster" name="poster[title]" placeholder="Nome do cartaz"/>
-                <textarea id="desc-poster" name="poster[description]" placeholder="Informe uma descrição para o cartaz, se precisar user #, vai auxiliar as procuras."></textarea>
-                <input type="file" id="file-poster" name="poster[ref_image]" />
-                <button id="sub-poster" name="sub-poster">Publicar</button>
-            </form>
+          <%= form_for @poster, html: {multipart: true, id: "frm-pub-poster"} do |f| %>
+              <%= f.text_field :title, placeholder: "Nome do cartaz", id: "title-poster" %>
+              <%= f.text_area :description, placeholder: "Informe uma descrição para o cartaz, se precisar user #, vai auxiliar as procuras.", id: "description-poster" %>
+              <%= f.file_field :ref_imagem, id: "file-poster" %>
+              <button id="sub-poster" name="sub-poster">Publicar</button>
+          <% end %>
         </div>
     </div>
 </div>
