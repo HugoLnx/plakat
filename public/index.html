@@ -95,22 +95,21 @@ $(function(){
   <style type="text/css">
   .posters-shadow{
     width: 100%;
+    height: 100%;
     position: absolute;
-    top: 0;
-    z-index: 2;
+    z-index: 99;
     background: rgba(0,0,0,.5);
-    /*display: none;*/
+    display: none;
   }
   .poster-shadow{
-    width: 80%;
-    max-width: 640px;
+    width: auto;
     height: auto;
     background: #FFFFFF;
     border: solid 1px #eaeaea;
+    margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 10px;
     position: absolute;
-    left: 25%;
     cursor: pointer;
   }
   .poster-shadow-div{
@@ -144,12 +143,16 @@ $(function(){
     z-index: 2;
   }
   .poster-image{
+    text-align: center; 
+  }
+  .poster-image img{
     max-height: 100%;
-    min-height: 450px;
-    background-color: #aac;
   }
   </style>
-  <div class="posters-shadow">
+  
+</div>
+
+<div class="posters-shadow">
       <div class="poster-shadow">
         <div class="poster-shadow-div">
             <div class="poster-title">
@@ -159,10 +162,11 @@ $(function(){
                 teste para descrição
             </div>
         </div>
-        <img class="poster-image" src="img/poster.jpg">
+        <div class="poster-image">
+            <img src="img/poster.jpg">
+        </div>
       </div>
   </div>
-</div>
 
 <nav id="categoriesMenu" class="plak-menu">
     <li><a href="#">Categoria 1</a></li>

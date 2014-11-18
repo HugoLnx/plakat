@@ -5,7 +5,7 @@
     var $shadowPoster = $(".poster-shadow");
     var $shadowTitle = $shadowPoster.find(".poster-title");
     var $shadowDescription = $shadowPoster.find(".poster-description");
-    var $shadowImage = $shadowPoster.find(".poster-image img");
+    var $shadowImage = $shadowPoster.find(".poster-image");
 
     $("#posters").on("click", ".poster", function(event) {
       var $poster = $(this);
@@ -15,8 +15,9 @@
 
       $shadowTitle.text(title);
       $shadowDescription.text(description);
-      $shadowImage.attr("src", imageUrl);
+      //$shadowImage.attr("src", imageUrl);
       $shadowDiv.fadeIn(200);
+      $(document.body).css("overflow-y", "none");
     });
 
     $shadowPoster.on("click", function() {
