@@ -15,12 +15,10 @@
 
 $(function(){
       $(".poster-shadow").mouseover(function(){
-        $('.poster-title').slideDown(300);
-        $('.poster-description').slideDown(300);
+        $('.poster-shadow-div').fadeIn(300);
       });
       $(".poster-shadow").mouseleave(function(){
-        $('.poster-title').slideUp(300);
-        $('.poster-description').slideUp(300);
+        $('.poster-shadow-div').fadeOut(300);
       });
 });
 
@@ -101,7 +99,7 @@ $(function(){
     top: 0;
     z-index: 2;
     background: rgba(0,0,0,.5);
-    display: none;
+    /*display: none;*/
   }
   .poster-shadow{
     width: 80%;
@@ -109,58 +107,59 @@ $(function(){
     height: auto;
     background: #FFFFFF;
     border: solid 1px #eaeaea;
-    margin: 0 auto;
     margin-top: 10px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+    position: absolute;
+    left: 25%;
     cursor: pointer;
   }
-  .poster-title{
-    width: 500px;
+  .poster-shadow-div{
+    width: 100%;
+    height: 100%;
     color: #FFFFFF;
-    margin-left: 10px;
     min-height: 70px;
-    font-size: 2.2em;
     background: rgba(0,0,0,.6);
-    padding: 5px;
     text-shadow: 1px 1px #000000;
     text-align: center;
     position: absolute;
     z-index: 2;
     display: none;
+  }
+  .poster-title{
+    color: #FFFFFF;
+    font-size: 2.8em;
+    padding: 5px;
+    text-shadow: 1px 1px #000000;
+    text-align: center;
+    margin-top: 30px;
+    z-index: 2;
+  }  
+  .poster-description{
+    color: #FFFFFF;
+    font-size: 1.8em;
+    padding: 5px;
+    text-shadow: 1px 1px #000000;
+    text-align: center;
+    margin-top: 30px;
+    z-index: 2;
   }
   .poster-image{
     max-height: 100%;
     min-height: 450px;
     background-color: #aac;
   }
-  .poster-description{
-    width: 500px;
-    color: #FFFFFF;
-    margin-left: 10px;
-    min-height: 70px;
-    font-size: 1.2em;
-    background: rgba(0,0,0,.6);
-    padding: 5px;
-    text-shadow: 1px 1px #000000;
-    text-align: center;
-    bottom: 0;
-    position: absolute;
-    z-index: 2;
-    display: none;
-  }
   </style>
   <div class="posters-shadow">
       <div class="poster-shadow">
-        <div class="poster-title">
-            Carregando...
+        <div class="poster-shadow-div">
+            <div class="poster-title">
+                Teste de conteudo
+            </div>
+            <div class="poster-description">
+                teste para descrição
+            </div>
         </div>
-        <div class="poster-image">
-            <img src="img/poster.jpg">
-        </div>
-        <div class="poster-description">
-            Carregando...
-        </div>
-
+        <img class="poster-image" src="img/poster.jpg">
       </div>
   </div>
 </div>
