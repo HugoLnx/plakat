@@ -41,6 +41,43 @@ $(function(){
 
 <body itemscope itemtype="http://schema.org/WebPage" ng-app="plakat.controllers">
 
+<header>
+    <div id="statusBar">
+        <div class="media-container">
+            <div id="logo">
+                <h1><a href="index.html"><img src="img/logo.svg" alt="Plakat" /></a></h1>
+            </div>
+            <!--<nav id="loginNav">
+                <li><a href="#">Entrar</a></li>
+                <li><a href="#">Cadastrar</a></li>
+            </nav>-->
+        </div>
+    </div>
+    <div id="landing">
+        <div class="wrapper">
+            <div itemprop="about" id="about">
+                <p>Saiba de tudo que está acontecendo na Universidade.</p>
+            </div>
+        </div>
+    </div>
+    <div id="titleBar">
+        <div class="media-container">
+            <div id="categories">
+                <a href="#titleBar" class="plak-button"><span class="plak-icon plak-icon-list plak-icon-text"></span>Murais</a>
+            </div>
+            <div id="write">
+                <a href="publish.html" class="plak-button"><span class="plak-icon plak-icon-edit plak-icon-text"></span>Escrever cartaz</a>
+            </div>
+            <div id="search" ng-controller="SearchController as search">
+                <form id="searchForm" method="get" action="#">
+                    <input id="search-field" type="search" ng-model="search.term" name="q" placeholder="Buscar cartazes" class="plak-input" />
+                    <input type="submit" name="submit" class="plak-icon plak-icon-search" value="" />
+                </form>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</header>
 
 <div id="posters" ng-controller="PostersListController as postersCtrl">
   <div class="media-container" ng-repeat="poster in postersCtrl.posters">
