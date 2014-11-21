@@ -90,8 +90,8 @@ $(function(){
     <div class="poster"
       data-title="{{poster.title}}"
       data-description="{{poster.description}}"
-      data-image="{{poster.ref_imagem.original.url}}"
-      style="background-image: url({{poster.ref_imagem.url}});">
+      data-image="{{poster.ref_imagem.large.url}}"
+      style="background-image: url({{poster.ref_imagem.small.url}});">
       <div class="text-container">
         <span class="title">{{poster.title | limitTo: 75}}</span>
         <span class="description">{{poster.description | limitTo : 250}}</span>
