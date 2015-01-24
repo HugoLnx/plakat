@@ -2,7 +2,7 @@
 <link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
 <link rel="import" href="../../bower_components/core-tooltip/core-tooltip.html">
 
-<polymer-element name="plakat-poster" attributes="width height mobile">
+<polymer-element name="plakat-poster" attributes="heading desc img mobile">
 	<template>
 		<style>
 			:host {
@@ -27,10 +27,9 @@
 				padding: 16px;
 				background-color: #fff;
 			}
-			
-			polyfill-next-selector { content: '#content header' }
-			#content content[select="header"]::content header {
-				margin-bottom: 8px;
+
+			#content h2 {
+				margin: 0 0 8px 0;
 				font-size: 24px;
 			}
 		</style>
@@ -53,21 +52,36 @@
 				}
 			</style>
 		</template>
-
 		<paper-shadow>
 			<div id="poster">
-				<img src="http://baconmockup.com/{{width}}/{{height}}" width="{{width}}" height="{{height}}">
+				<img src="http://baconmockup.com/400/320" width="{{width}}" height="320">
 				<div id="content">
-					<content select="header"></content>
-					<content select="desc"></content>
+					<h2>{{heading}}</h2>
+					<div id="desc">{{desc}}</div>
 				</div>
 			</div>
 		</paper-shadow>
 	</template>
 	<script>
+		Number.prototype.clamp = function(min, max) {
+		 	return Math.min(Math.max(this, min), max);
+		};
+
 		Polymer('plakat-poster', {
+			minLength: 0,
+			maxLength: 500,
+			minWidth: 220,
+			maxWidth: 320,
+			width: 320,
+
 			ready: function() {
-				// Aparentemente o iOS não consegue entender o {{width}}px no css, então isso é necessário
+				var length = this.desc.length;
+				var varLength = this.maxLength - this.minLength;
+				var varWidth = this.maxWidth - this.minWidth;
+				var lengthRatio = (length / varLength).clamp(0, 1);
+				
+				this.width = this.minWidth + varWidth * lengthRatio;	
+
 				this.style.width = this.width + "px";
 			}
 		});

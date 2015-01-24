@@ -1,111 +1,66 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../plakat-spinner/plakat-spinner.html">
 <link rel="import" href="plakat-poster.html">
 <script src="board.js"></script>
 
 <polymer-element name="plakat-board">
 	<template>
+		<template id="aaa" repeat="{{page, i in pages}}">
+			<core-ajax id="pagesAjax{{i + 1}}" auto url="http://www.plakat.com.br/posters.json" params='{"per_page": "15", "page": "{{i + 1}}", "term": ""}' handleAs="json" response="{{responses[i]}}"></core-ajax>
+		</template>
 		<style>
 			:host {
 				position: relative;
 				display: block;
 				margin: 32px 16px;
-				box-sizing: border-box;
+				padding-bottom: 32px;
 			}
 
 			plakat-poster {
 				transition: top .3s, left .3s;
 			}
+
+			plakat-spinner {
+				visibility: hidden;
+				position: absolute;
+				display: -webkit-flex;
+				display: flex;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				justify-content: center;
+			}
+
+			plakat-spinner.active {
+				visibility: visible;
+			}
 		</style>
 
-		<plakat-poster width="230" height="240">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo dsha uhsaihdsajdh hdsa.</desc>
-		</plakat-poster>
+		<template repeat="{{response in responses}}">
+			<template repeat="{{response}}">
+				<plakat-poster heading="{{title}}" desc="{{description}}" img="{{ref_imagem.small.url}}"></plakat-poster>
+			</template>
+		</template>
 
-		<plakat-poster width="320" height="480">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
+		<plakat-spinner></plakat-spinner>
 
-		<plakat-poster width="320" height="210">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="320" height="210">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="240" height="200">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="280" height="380">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="210" height="180">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="190" height="240">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="280" height="120">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="280" height="120">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="300" height="250">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="300" height="250">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="180" height="150">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="220" height="200">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="220" height="200">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="300" height="280">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
-
-		<plakat-poster width="340" height="280">
-			<header>Vendo gatinho feio</header>
-			<desc>Ele é muito feio e eu quero vendê-lo.</desc>
-		</plakat-poster>
 	</template>
 	<script>
 		Polymer('plakat-board', {
-			domReady: function() {
-				new Board(this, this.shadowRoot.querySelectorAll('plakat-poster'), 16);
+			responses: [],
+			pages: ['', ''],
+
+			loadPage: function() {
+				this.pages.push('');
+			},
+
+			responsesChanged: function() {
+				var self = this;
+
+				setTimeout(function() {
+					new Board(self, self.shadowRoot.querySelectorAll('plakat-poster'), 16);
+				}, 1);
 			}
 		});
 	</script>
