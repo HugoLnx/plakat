@@ -147,6 +147,17 @@ Board.prototype.arrange = function() {
 			}
 		}
 	}
+
+	var ys = [];
+
+	for (var i in this.placed)
+	{
+		ys.push(this.placed[i].getMaxY());
+	}
+
+	var maxY = Math.max.apply(null, ys);
+	this.container.style.height = maxY + "px";
+
 };
 
 // Returns the next empty place inside the container

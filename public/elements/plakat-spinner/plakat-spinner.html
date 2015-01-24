@@ -5,7 +5,6 @@
 		<style>
 			:host {
 				display: block;
-				margin: 100px;
 			}
 
 			#spinner {
@@ -55,8 +54,8 @@
 					square.style.width = square.style.height = square.style.margin = size/9 + "px";
 				}
 
-				this.style.width = size + "px";
-				this.style.height = size/3 + "px";
+				this.$.spinner.style.width = size + "px";
+				this.$.spinner.style.height = size/3 + "px";
 			}
 		});
 	</script>
