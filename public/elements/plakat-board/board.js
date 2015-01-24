@@ -131,7 +131,7 @@ Board.prototype.arrange = function() {
 			}
 			while (!poster);
 
-			if (place.getMaxX() - place.getX() - poster.getWidth() < 0) {console.log('lol'); continue;}
+			if (place.getMaxX() - place.getX() - poster.getWidth() < 0) { continue; }
 
 			poster.place(place);
 			this.placed.push(poster);
@@ -235,7 +235,7 @@ Board.prototype.getLimits = function(poster, posters) {
 // Choose the better poster for the given place
 Board.prototype.choosePosterForPlace = function(place, posters) {
 	var rank = [];
-	var limit = 15;
+	var limit = 10;
 
 	for (var i in posters)
 	{

@@ -38,7 +38,7 @@
 			<core-header-panel id="main" mode="seamed" main>
 				<plakat-toolbar class="core-header" mobile="{{mobile}}"></plakat-toolbar>
 				<div class="content">
-					<plakat-board></plakat-board>
+					<plakat-board id="board"></plakat-board>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>
@@ -55,8 +55,14 @@
 				this.addEventListener('send-poster', function(evt) { this.sendPoster(evt.detail) });
 				this.addEventListener('toggle-panel', function() { this.togglePanel() });
 
+				var board = this.$.board;
+
 				this.$.main.scroller.addEventListener('scroll', function() {
 					console.log(this.scrollTop);
+					console.log(board.style.height);
+					if (this.scrollTop > parseInt(board.style.height) * .5) {
+						board.loadPage();
+					}
 				});
 			},
 

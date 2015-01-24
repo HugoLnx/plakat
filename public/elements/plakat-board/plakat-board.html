@@ -7,7 +7,7 @@
 <polymer-element name="plakat-board">
 	<template>
 		<template id="aaa" repeat="{{page, i in pages}}">
-			<core-ajax id="pagesAjax{{i + 1}}" auto url="http://www.plakat.com.br/posters.json" params='{"per_page": "15", "page": "{{i + 1}}", "term": ""}' handleAs="json" response="{{responses[i]}}"></core-ajax>
+			<core-ajax auto url="http://www.plakat.com.br/posters.json" params='{"per_page": "5", "page": "{{i + 1}}", "term": ""}' handleAs="json" response="{{responses[i]}}" on-core-response="{{pagesResponse}}"></core-ajax>
 		</template>
 		<style>
 			:host {
@@ -15,10 +15,6 @@
 				display: block;
 				margin: 32px 16px;
 				padding-bottom: 32px;
-			}
-
-			plakat-poster {
-				transition: top .3s, left .3s;
 			}
 
 			plakat-spinner {
@@ -43,16 +39,27 @@
 			</template>
 		</template>
 
-		<plakat-spinner></plakat-spinner>
+		<plakat-spinner id="spinner"></plakat-spinner>
 
 	</template>
 	<script>
 		Polymer('plakat-board', {
+			loading: false,
 			responses: [],
-			pages: ['', ''],
+			pages: [''],
 
 			loadPage: function() {
+				console.log(this.loading);
+				if (this.loading) return;
+
+				this.$.spinner.classList.add('active');
+				this.loading = true;
 				this.pages.push('');
+			},
+
+			pagesResponse: function() {
+				this.$.spinner.classList.remove('active');
+				this.loading = false;
 			},
 
 			responsesChanged: function() {
