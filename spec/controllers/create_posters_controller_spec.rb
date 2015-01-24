@@ -5,7 +5,7 @@ RSpec.describe PostersController do
     let(:title){ "My Plakat Title" }
     let(:description){ "My cool Plakat Description" }
     let(:date_event){ Time.now.to_date }
-    let(:date_expiration){ (Time.now + 15).to_date }
+    let(:date_expiration){ (Time.now + 30.days).to_date }
     let(:visibility_title){ true }
     let(:visibility_description){ true }
     let(:visibility_date_event){ true }
