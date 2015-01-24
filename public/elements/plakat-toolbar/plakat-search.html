@@ -1,0 +1,42 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
+<link rel="import" href="../../bower_components/core-field/core-field.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../bower_components/core-icons/hardware-icons.html">
+
+<polymer-element name="plakat-search" attributes="mobile">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+
+			core-field {
+				background: #fff;
+				transition: background .2s;
+				border-radius: 1px;
+			}
+
+			core-icon {
+				color: rgba(0, 0, 0, .5);
+			}
+
+			input {
+				margin: 0 !important;
+				height: 40px;
+			}
+		</style>
+		<paper-shadow>
+			<core-field id="searchField">
+				<core-icon icon="search"></core-icon>
+				<input type="search" id="search" placeholder="Buscar cartazes" value="{{search}}" flex>
+			</core-field>
+		</paper-shadow>
+	</template>
+	<script>
+		Polymer('plakat-search', {
+
+		});
+	</script>
+</polymer-element>

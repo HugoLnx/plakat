@@ -1,0 +1,73 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/pvc-globals/pvc-globals.html">
+<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../../bower_components/core-tooltip/core-tooltip.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../bower_components/core-icons/social-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="plakat-search.html">
+
+<polymer-element name="plakat-toolbar-main" attributes="mobile">
+	<template>
+		<pvc-globals values="{{data}}"></pvc-globals>
+
+		<link rel="stylesheet" href="plakat-toolbar.css">
+		<style>
+			:host {
+				-webkit-transform: translate3d(-80px, 0, 0);
+				-ms-transform: translate3d(-80px, 0, 0);
+				transform: translate3d(-80px, 0, 0);
+			}
+		</style>
+
+		<core-toolbar relative>
+
+			<template if="{{!mobile}}" bind="{{data}}">
+				<paper-icon-button icon="menu" on-tap="{{togglePanel}}"></paper-icon-button>
+				<div id="category" title="{{category.name}}">{{category.name}}</div>
+				<plakat-search search="{{search}}"></plakat-search>
+				<div flex></div>
+				<paper-button><core-icon icon="social:person"></core-icon>Login</paper-button>
+			</template>
+
+			<template if="{{mobile}}" bind="{{data}}">
+				<paper-icon-button icon="menu" on-tap="{{togglePanel}}"></paper-icon-button>
+				<div id="category" title="{{category.name}}">{{category.name}}</div>
+				<div flex></div>
+				<paper-icon-button icon="search" on-tap="{{beginSearch}}"></paper-icon-button>
+				<paper-icon-button id="moreDropdownBtn" icon="more-vert" on-tap="{{openMoreDropdown}}"></paper-icon-button>
+				<paper-dropdown id="moreDropdown" halign="right" duration="200">
+					<template if="{{!user.name}}">
+						<paper-button>Login</paper-button>
+					</template>
+					<template if="{{user.name}}">
+						<paper-button>Meus cartazes</paper-button>
+						<paper-button>Sair</paper-button>
+					</template>
+			    </paper-dropdown>
+			</template>
+
+		</core-toolbar>
+
+	</template>
+	<script>
+		Polymer('plakat-toolbar-main', {
+			domReady: function() {
+				this.classList.add('ready');
+			},
+
+			togglePanel: function() {
+				this.fire('toggle-panel');
+			},
+
+			openMoreDropdown: function() {
+				this.$.moreDropdown.toggle();
+			},
+
+			beginSearch: function() {
+				this.fire('begin-search');
+			}
+		});
+	</script>
+</polymer-element>

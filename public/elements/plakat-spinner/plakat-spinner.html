@@ -1,0 +1,63 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="plakat-spinner" attributes="size">
+	<template>
+		<style>
+			:host {
+				display: block;
+				margin: 100px;
+			}
+
+			#spinner {
+				display: -webkit-flex;
+				display: flex;
+			}
+
+	        .square {
+	            background: #e91e63;
+	            -webkit-animation: spinner .6s linear 0 infinite alternate;
+	        }
+
+	        .square:nth-child(2) {
+	            -webkit-animation: spinner .6s linear .2s infinite alternate;
+	        }
+
+	        .square:nth-child(3) {
+	            -webkit-animation: spinner .6s linear .4s infinite alternate;
+	        }
+
+	        @-webkit-keyframes spinner {
+	            0%   { -webkit-transform: scale(1); }
+	            50%   { -webkit-transform: scale(1); }
+	            100%   { -webkit-transform: scale(3); }
+	        }
+
+		</style>
+
+		<div id="spinner">
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+		</div>
+
+	</template>
+	<script>
+		Polymer('plakat-spinner', {
+			size: 72,
+
+			domReady: function() {
+				var size = this.size;
+				var squares = this.shadowRoot.querySelectorAll('.square');
+
+				for (var i = 0; i < squares.length; i++)
+				{
+					var square = squares[i];
+					square.style.width = square.style.height = square.style.margin = size/9 + "px";
+				}
+
+				this.style.width = size + "px";
+				this.style.height = size/3 + "px";
+			}
+		});
+	</script>
+</polymer-element>

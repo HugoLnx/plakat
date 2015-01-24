@@ -1,0 +1,94 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-media-query/core-media-query.html">
+<link rel="import" href="../bower_components/pvc-globals/pvc-globals.html">
+<link rel="import" href="../bower_components/core-drawer-panel/core-drawer-panel.html">
+<link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="plakat-toolbar/plakat-toolbar.html">
+<link rel="import" href="plakat-board/plakat-board.html">
+<link rel="import" href="plakat-data.html">
+
+<polymer-element name="plakat-app" attributes="mobile">
+	<template>
+		<style>
+			:host {
+				position: fixed;
+				background-color: #efefef;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: 100vw;
+				height: 100vh;
+			}
+
+			core-drawer-panel::shadow #drawer {
+				background-color: #fff;
+			}
+
+			core-drawer-panel::shadow #drawer,
+			core-drawer-panel::shadow #scrim {
+				z-index: 2;
+			}
+		</style>
+		<core-media-query query="max-width: 640px" queryMatches="{{mobile}}"></core-media-query>
+		<plakat-data></plakat-data>
+		<pvc-globals values="{{data}}"></pvc-globals>
+		<core-drawer-panel id="panel" forceNarrow>
+			<div drawer></div>
+			<core-header-panel mode="seamed" main>
+				<plakat-toolbar class="core-header" mobile="{{mobile}}"></plakat-toolbar>
+				<div class="content">
+					<plakat-categories-select></plakat-categories-select>
+					<plakat-board></plakat-board>
+				</div>
+			</core-header-panel>
+		</core-drawer-panel>
+
+	</template>
+	<script>
+		Polymer('plakat-app', {
+			ready: function() {
+				this.addEventListener('back', function(evt) { this.backToMain() });
+				this.addEventListener('begin-search', function(evt) { this.beginSearch() });
+				this.addEventListener('change-category', function(evt) { this.changeCategory(evt.detail) });
+				this.addEventListener('view-poster', function(evt) { this.viewPoster(evt.detail) });
+				this.addEventListener('create-poster', function(evt) { this.createPoster(evt.detail) });
+				this.addEventListener('send-poster', function(evt) { this.sendPoster(evt.detail) });
+				this.addEventListener('toggle-panel', function() { this.togglePanel() });
+			},
+
+			backToMain: function() {
+				this.data.toolbar = "main";
+				this.data.poster = {};
+			},
+
+			beginSearch: function() {
+				this.data.toolbar = "search";
+			},
+
+			changeCategory: function(category) {
+				this.backToMain();
+				this.data.category = category;
+			},
+
+			viewPoster: function(poster) {
+				this.data.toolbar = "view";
+				this.data.poster = poster;
+			},
+
+			createPoster: function(poster) {
+				this.data.toolbar = "create";
+				this.data.poster = poster;
+			},
+
+			sendPoster: function(poster) {
+				this.backToMain();
+			},
+
+			togglePanel: function() {
+				console.log('lol');
+				this.$.panel.togglePanel();
+			}
+		});
+	</script>
+</polymer-element>

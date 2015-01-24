@@ -1,0 +1,21 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/pvc-globals/pvc-globals.html">
+
+<polymer-element name="plakat-data" attributes="category">
+	<template>
+		<pvc-globals values="{{data}}"></pvc-globals>
+	</template>
+	<script>
+		Polymer('plakat-data', {
+			ready: function() {
+				this.data.user = {};
+				this.data.categories = [];
+				this.data.category = {name: "Tudo"};
+				this.data.search = "";
+				this.data.posters = [];
+				this.data.poster = {categories: [{name: "Design"}, {name: "Comunicação"}, {name: "Informática"}, {name: "Ciências Sociais"}, {name: "Só mais uma"}, {name: "Sertanejo de raiz"}]};
+				this.data.toolbar = "";
+			}
+		});
+	</script>
+</polymer-element>

@@ -1,0 +1,75 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/core-tooltip/core-tooltip.html">
+
+<polymer-element name="plakat-poster" attributes="width height mobile">
+	<template>
+		<style>
+			:host {
+				display: block;
+				cursor: pointer;
+			}
+
+			paper-shadow {
+				border-radius: 1px;
+			}
+
+			#poster {
+				border-radius: inherit;
+				overflow: hidden;
+			}
+
+			#poster img {
+				vertical-align: middle;
+			}
+
+			#content {
+				padding: 16px;
+				background-color: #fff;
+			}
+			
+			polyfill-next-selector { content: '#content header' }
+			#content content[select="header"]::content header {
+				margin-bottom: 8px;
+				font-size: 24px;
+			}
+		</style>
+
+		<template if="{{mobile}}">
+			<style>
+				:host {
+					width: calc(50% - 8px);
+				}
+
+				#poster img {
+					width: 100%;
+					height: auto;
+				}
+
+				@media screen and (max-width: 420px) {
+					:host {
+						width: calc(100% - 8px);
+					}
+				}
+			</style>
+		</template>
+
+		<paper-shadow>
+			<div id="poster">
+				<img src="http://baconmockup.com/{{width}}/{{height}}" width="{{width}}" height="{{height}}">
+				<div id="content">
+					<content select="header"></content>
+					<content select="desc"></content>
+				</div>
+			</div>
+		</paper-shadow>
+	</template>
+	<script>
+		Polymer('plakat-poster', {
+			ready: function() {
+				// Aparentemente o iOS não consegue entender o {{width}}px no css, então isso é necessário
+				this.style.width = this.width + "px";
+			}
+		});
+	</script>
+</polymer-element>

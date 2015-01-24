@@ -1,0 +1,137 @@
+:host {
+	display: block;
+	height: auto;
+	transition: all .3s;
+	-webkit-transform: translate3d(80px, 0, 0);
+	-ms-transform: translate3d(80px, 0, 0);
+	transform: translate3d(80px, 0, 0);
+	opacity: 0;
+}
+
+:host(.ready) {
+	-webkit-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	opacity: 1;
+}
+
+core-toolbar {
+	background: transparent;
+	color: #fff;
+	height: inherit;
+}
+
+core-toolbar::shadow .toolbar-tools {
+	height: inherit;
+	padding: 0;
+}
+
+polyfill-next-selector { content: 'core-toolbar::shadow .toolbar-tools > *' }
+core-toolbar::shadow ::content > * {
+	margin: 0;
+}
+
+paper-icon-button {
+	-webkit-flex: none;
+	flex: none;
+	padding: 16px;
+}
+
+paper-button {
+	-webkit-flex: none;
+	flex: none;
+	border-radius: 1px;
+	padding: 4px;
+	height: 56px;
+}
+
+paper-button::shadow .button-content {
+	padding: 0 8px;
+	height: 100%;
+}
+
+paper-button core-icon {
+	-webkit-flex: none;
+	flex: none;
+	margin-right: 8px;
+}
+
+plakat-search {
+	margin-left: 32px !important;
+	width: 360px;
+}
+
+#category {
+	overflow: hidden;
+	white-space: nowrap;
+	margin-left: 8px;
+	text-overflow: ellipsis;
+}
+
+#categories {
+	display: -webkit-flex;
+	display: flex;
+	margin-right: 8px;
+	white-space: nowrap;
+}
+
+#categories paper-button {
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex: 0 1 auto;
+	flex: initial;
+	background: #fff;
+	color: #e91e63;
+	height: 40px;
+	padding: 0;
+	margin-left: 8px;
+	margin-right: 0;
+	min-width: 40px;
+}
+
+#categories paper-button::shadow .button-content {
+	padding: 0 8px;
+	height: 100%;
+	overflow: hidden;
+}
+
+#categories paper-button div {
+	overflow: hidden;
+	text-transform: none;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+#categories paper-button core-icon {
+	-webkit-flex: none;
+	flex: none;
+	width: 16px;
+	height: 16px;
+	margin-left: 8px;
+	margin-right: 0;
+	color: rgba(0, 0, 0, .3);
+}
+
+#moreCategories paper-button,
+paper-dropdown paper-button {
+	display: block;
+	color: #e91e63;
+	height: 40px;
+	font-size: .75em;
+	margin: 0;
+	padding: 8px;
+	text-transform: none;
+}
+
+#moreCategories paper-button::shadow .button-content,
+paper-dropdown paper-button::shadow .button-content {
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+}
+
+#moreDropdown {
+	-webkit-transform: translate(-8px, 8px);
+	-ms-transform: translate(-8px, 8px);
+	-o-transform: translate(-8px, 8px);
+	transform: translate(-8px, 8px);
+}

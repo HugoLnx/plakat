@@ -1,0 +1,96 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
+<link rel="import" href="../../bower_components/core-icons/social-icons.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-dropdown/paper-dropdown.html">
+
+<polymer-element name="plakat-toolbar-view" attributes="mobile">
+	<template>
+		<pvc-globals values="{{data}}"></pvc-globals>
+
+		<link rel="stylesheet" href="plakat-toolbar.css">
+
+		<core-toolbar>
+
+			<template if="{{!mobile}}" bind="{{data}}">
+				<paper-icon-button icon="arrow-back" on-tap="{{back}}"></paper-icon-button>
+
+				<div id="categories">
+
+					<template repeat="{{cat, i in poster.categories}}">
+						<template if="{{i < 3}}">
+							<paper-button on-tap="{{changeCategory}}" data-category="{{i}}" raised>
+								<div>{{cat.name}}</div>
+								<core-icon icon="link"></core-icon>
+							</paper-button>
+						</template>
+					</template>
+
+					<template if="{{poster.categories.length > 3}}">
+						<paper-button on-tap="{{openMoreCategories}}" raised>+{{poster.categories.length - 3}}</paper-button>
+						<paper-dropdown id="moreCategories" halign="right" duration="200">
+							<template repeat="{{cat, i in poster.categories}}">
+								<paper-button on-tap="{{changeCategory}}" data-category="{{i}}">
+									<div>{{cat.name}}</div>
+									<core-icon icon="link"></core-icon>
+								</paper-button>
+							</template>
+					    </paper-dropdown>
+					</template>
+
+				</div>
+
+				<div flex></div>
+				<paper-button><core-icon icon="social:post-facebook"></core-icon>Compartilhar</paper-button>
+			</template>
+
+			<template if="{{mobile}}" bind="{{data}}">
+				<paper-icon-button icon="arrow-back" on-tap="{{back}}"></paper-icon-button>
+
+				<div id="categories">
+
+					<template bind="{{poster.categories as cat}}">
+						<paper-button on-tap="{{changeCategory}}" data-category="0" raised><div>{{cat[0].name}}</div><core-icon icon="link"></core-icon></paper-button>
+
+						<template if="{{poster.categories.length > 1}}">
+							<paper-button on-tap="{{openMoreCategories}}" raised>+{{poster.categories.length - 1}}</paper-button>
+							<paper-dropdown id="moreCategories" halign="right" duration="200">
+								<template repeat="{{cat, i in poster.categories}}">
+									<paper-button on-tap="{{changeCategory}}" data-category="{{i}}">
+										<div>{{cat.name}}</div>
+										<core-icon icon="link"></core-icon>
+									</paper-button>
+								</template>
+						    </paper-dropdown>
+						</template>
+					</template>
+
+				</div>
+				<div flex></div>
+				<paper-icon-button icon="social:share"></paper-icon-button>
+			</template>
+
+		</core-toolbar>
+
+	</template>
+	<script>
+		Polymer('plakat-toolbar-view', {
+			domReady: function() {
+				this.classList.add('ready');
+			},
+
+			back: function() {
+				this.fire('back');
+			},
+
+			changeCategory: function(evt, detail, sender) {
+				this.fire('change-category', this.data.poster.categories[sender.dataset.category]);
+			},
+
+			openMoreCategories: function() {
+				this.$.moreCategories.toggle();
+			}
+		});
+	</script>
+</polymer-element>

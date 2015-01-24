@@ -1,211 +1,38 @@
-
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>Plakat</title>
+    
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/font-roboto/roboto.html">
+    <link rel="import" href="elements/plakat-app.html">
 
-<meta charset="UTF-8">
+    <style type="text/css" shim-shadowdom>
+    	* {
+    		-webkit-tap-highlight-color: transparent;
+    	}
 
-<title>Plakat</title>
+    	body {
+            background-color: #e91e63;
+    		font-family: RobotoDraft, sans-serif;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+    	}
 
-<link href='https://fonts.googleapis.com/css?family=Roboto:300,900,400' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-<script type="text/javascript">
-
-$(function(){
-      $(".poster-shadow").mouseover(function(){
-        $('.poster-shadow-div').removeClass('poster-hide');
-      });
-      $(".poster-shadow").mouseleave(function(){
-        if (!$('.poster-shadow-div').hasClass('poster-no-picture')) {
-            $('.poster-shadow-div').addClass('poster-hide');    
-        };        
-      });
-      $("#search-field").click(function(){
-        $(document.body).animate({
-            scrollTop:$('#titleBar').offset().top
-        }, 500); 
-      });
-     
-});
-
-</script>
-
-<script type="text/javascript" src="js/ui.js"></script>
-
+        html /deep/ paper-ripple::shadow #bg,
+        html /deep/ paper-ripple::shadow #waves,
+        html /deep/ paper-ripple::shadow .wave-container,
+        html /deep/ paper-ripple::shadow .wave {
+            border-radius: 0 !important;
+        }
+    </style>
 </head>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
-<script src="js/plakat_modules.js"></script>
-<script src="js/services/search_signal.js"></script>
-<script src="js/services/http_utils.js"></script>
-<script src="js/services/server_url_generator.js"></script>
-<script src="js/services/server_client.js"></script>
-<script src="js/controllers/search_controller.js"></script>
-<script src="js/controllers/posters_list_controller.js"></script>
-
-<body itemscope itemtype="http://schema.org/WebPage" ng-app="plakat.controllers">
-
-<header>
-    <div id="statusBar">
-        <div class="media-container">
-            <div id="logo">
-                <h1><a href="index.html"><img src="img/logo.svg" alt="Plakat" /></a></h1>
-            </div>
-            <!--<nav id="loginNav">
-                <li><a href="#">Entrar</a></li>
-                <li><a href="#">Cadastrar</a></li>
-            </nav>-->
-        </div>
-    </div>
-    <div id="landing">
-        <div class="wrapper">
-            <div itemprop="about" id="about">
-                <p>Saiba de tudo que está acontecendo na Universidade.</p>
-            </div>
-        </div>
-    </div>
-    <div id="titleBar">
-        <div class="media-container">
-            <!--<div id="categories">
-                <a href="#titleBar" class="plak-button"><span class="plak-icon plak-icon-list plak-icon-text"></span>Murais</a>
-              </div>-->
-            <div id="write">
-                <a href="/posters/new" class="plak-button"><span class="plak-icon plak-icon-edit plak-icon-text"></span>Escrever cartaz</a>
-            </div>
-            <div id="search" ng-controller="SearchController as search">
-                <form id="searchForm" method="get" action="#">
-                    <input id="search-field" type="search" ng-model="search.term" name="q" placeholder="Buscar cartazes" class="plak-input" />
-                    <input type="submit" name="submit" class="plak-icon plak-icon-search" value="" />
-                </form>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-</header>
-
-<div id="posters" ng-controller="PostersListController as postersCtrl">
-  <div class="media-container" ng-repeat="poster in postersCtrl.posters">
-    <div class="poster"
-      data-title="{{poster.title}}"
-      data-description="{{poster.description}}"
-      data-image="{{poster.ref_imagem.large.url}}"
-      style="background-image: url({{poster.ref_imagem.small.url}});">
-      <div class="text-container">
-        <span class="title">{{poster.title | limitTo: 75}}</span>
-        <span class="description">{{poster.description | limitTo : 250}}</span>
-      </div>
-    </div>
-  </div>
-  <p class="no-results-placeholder" ng-hide="postersCtrl.posters.length">Não foram encontrados cartazes</p>
-
-  <style type="text/css">
-.posters-shadow{
-    width: 100%;
-    height: 100%;
-    z-index: 99;
-    background: rgba(0,0,0,.5);
-    display: none;
-    position: fixed;
-    top: 0;
-  }
-  .poster-shadow{
-    width: 40%;
-    height: auto;
-    margin: 0 auto;
-    position: absolute;
-    cursor: pointer;
-    left: 30%;
-    right: 30%;
-  }
-  .poster-hide{
-    display: none;
-  }
-  .poster-shadow-div{
-    width: 100%;
-    height: 100%;
-    color: #FFFFFF;
-    min-height: 70px;
-    background: rgba(0,0,0,.6);
-    text-shadow: 1px 1px #000000;
-    text-align: center;
-    position: absolute;
-    z-index: 2;
-  }
-  .poster-item{
-    color: #FFFFFF;
-    padding: 5px;
-    text-shadow: 1px 1px #000000;
-    margin-top: 30px;
-    z-index: 2;
-  }
-  .poster-title{    
-    font-size: 2.2em;
-    text-align: center;
-  }  
-  .poster-description{
-    font-size: 1.2em;   
-    position: absolute;
-    bottom: 20px;
-  }
-  .poster-image{
-    text-align: center;
-    height: 100%;
-  }
-  .poster-image img{
-    width: 100%;
-    height: 100%;
-  }
-  </style>
-  
-</div>
-
-<div class="posters-shadow">
-      <div class="poster-shadow">
-        <div class="poster-shadow-div poster-hide">
-            <div class="poster-title poster-item">
-                Teste de conteudo
-            </div>
-            <div class="poster-description poster-item">
-                teste para descrição
-            </div>
-        </div>
-        <div class="poster-image">
-            <img src="img/poster.jpg">
-        </div>
-      </div>
-  </div>
-
-<nav id="categoriesMenu" class="plak-menu">
-    <li><a href="#">Categoria 1</a></li>
-    <li><a href="#">Categoria 2</a></li>
-    <li><a href="#">Categoria 3</a></li>
-    <li><a href="#">Categoria 4</a></li>
-    <li><a href="#">Categoria 5</a></li>
-    <li><a href="#">Categoria 6</a></li>
-    <li><a href="#">Categoria 7</a></li>
-    <li><a href="#">Categoria 8</a></li>
-    <li><a href="#">Categoria 8</a></li>
-    <li><a href="#">Categoria 8</a></li>
-    <li><a href="#">Categoria 8</a></li>
-    <li><a href="#">Categoria 8</a></li>
-    <li><a href="#">Categoria 8</a></li>
-    <li><a href="#">Categoria 8</a></li>
-    <li><a href="#">Categoria 8</a></li>
-    <li><a href="#">Categoria 8</a></li>
-</nav>
-
-<div class="plak-modal-bg"></div>
-
-<div class="plak-modal plak-modal-edit">
-
-</div>
-
-<div class="plak-modal plak-modal-view">
-
-</div>
-<script src="js/show_poster.js"></script>
+<body>
+    <plakat-app></plakat-app>
 </body>
-
 </html>
