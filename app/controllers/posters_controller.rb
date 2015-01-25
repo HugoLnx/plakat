@@ -1,9 +1,9 @@
 class PostersController < ApplicationController
 
   def index
-    @posters = Poster.page(params[:page])
+    @posters = Poster.filter(term: params[:term], category: params[:category])
+      .page(params[:page])
       .per(params[:per_page])
-      .filter(term: params[:term], category: params[:category])
       .where("date_expiration >= ? AND posters.disabled = ? ", Time.now, false )
     respond_to do |format|
       format.json{ render json: @posters , :only => [:id, :title , :description, :date_event, :ref_imagem] }
