@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nita</title>
+
+	<style>
+		body {
+			margin: 0;
+		}
+
+		#container {
+			margin: 7px;
+			text-align: center;
+		}
+
+		.column {
+			display: inline-block;
+			width: 320px;
+			vertical-align: top;
+			padding: 0 7px;
+		}
+
+		.poster {
+			background-color: white;
+			border: 1px solid #000;
+			margin: 14px 0;
+			width: 320px !important;
+		}
+
+	</style>
+
+</head>
+<body>
+
+<div id="container">
+
+	<div class="poster" style="width: 320px; height: 230px">1</div>
+	<div class="poster" style="width: 330px; height: 290px">2</div>
+	<div class="poster" style="width: 290px; height: 458px">3</div>
+	<div class="poster" style="width: 287px; height: 510px">4</div>
+	<div class="poster" style="width: 410px; height: 340px">5</div>
+	<div class="poster" style="width: 377px; height: 290px">6</div>
+	<div class="poster" style="width: 180px; height: 468px">7</div>
+	<div class="poster" style="width: 210px; height: 439px">8</div>
+	<div class="poster" style="width: 350px; height: 587px">9</div>
+	<div class="poster" style="width: 380px; height: 465px">10</div>
+	<div class="poster" style="width: 299px; height: 230px">11</div>
+	<div class="poster" style="width: 193px; height: 395px">12</div>
+	<div class="poster" style="width: 360px; height: 611px">13</div>
+	<div class="poster" style="width: 250px; height: 384px">14</div>
+	<div class="poster" style="width: 166px; height: 235px">15</div>
+	<div class="poster" style="width: 248px; height: 487px">16</div>
+	<div class="poster" style="width: 256px; height: 311px">17</div>
+
+</div>
+
+<script type="text/javascript">
+(function() {
+	var Poster = function(node) {
+
+	}
+
+	var Board = function(posters) {
+		this.posters = [];
+
+		// for (var i = 0; i < posters.length; )
+	}
+
+	Board.prototype.addPoster = function(poster) {
+		this.posters.push(poster);
+	};
+})();
+
+var posters = document.querySelectorAll('.poster');
+
+function arrange() {
+	var currentColumn = 0;
+	var iposters = posters;
+	var container = document.querySelector('#container');
+	var placedColumns = document.querySelectorAll('.column');
+
+	for (var i = 0; i < placedColumns.length; i++) {
+		container.removeChild(placedColumns[i]);
+	}
+
+	var column = document.createElement('div');
+	column.setAttribute('class', 'column');
+	container.appendChild(column);
+
+	var columnCount = parseInt(container.offsetWidth / column.scrollWidth);
+
+	for (var i = 0; i < columnCount - 1; i++) {
+		var column = document.createElement('div');
+		column.setAttribute('class', 'column');
+		container.appendChild(column);
+	}
+
+	var columns = document.querySelectorAll('.column');
+
+	for (var i = 0; i < iposters.length; i++) {
+		if (currentColumn == columns.length) {
+			currentColumn = 0;
+		}
+
+		columns[currentColumn].appendChild(iposters[i]);
+		currentColumn++;
+	}
+}
+
+arrange();
+window.addEventListener('resize', arrange);
+</script>
+
+</body>
+</html>

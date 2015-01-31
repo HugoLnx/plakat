@@ -7,7 +7,7 @@
 <polymer-element name="plakat-board">
 	<template>
 		<template id="aaa" repeat="{{page, i in pages}}">
-			<core-ajax auto url="http://www.plakat.com.br/posters.json" params='{"per_page": "5", "page": "{{i + 1}}", "term": ""}' handleAs="json" response="{{responses[i]}}" on-core-response="{{pagesResponse}}"></core-ajax>
+			<core-ajax auto url="http://www.plakat.com.br/posters.json" params='{"per_page": "30", "page": "{{i + 1}}", "term": ""}' handleAs="json" response="{{responses[i]}}" on-core-response="{{pagesResponse}}"></core-ajax>
 		</template>
 		<style>
 			:host {

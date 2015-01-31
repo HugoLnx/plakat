@@ -235,7 +235,7 @@ Board.prototype.getLimits = function(poster, posters) {
 // Choose the better poster for the given place
 Board.prototype.choosePosterForPlace = function(place, posters) {
 	var rank = [];
-	var limit = 10;
+	var limit = 1;
 
 	for (var i in posters)
 	{

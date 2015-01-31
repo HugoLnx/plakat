@@ -60,7 +60,7 @@
 				this.$.main.scroller.addEventListener('scroll', function() {
 					console.log(this.scrollTop);
 					console.log(board.style.height);
-					if (this.scrollTop > parseInt(board.style.height) * .5) {
+					if (this.scrollTop > parseInt(board.style.height) * .2) {
 						board.loadPage();
 					}
 				});
