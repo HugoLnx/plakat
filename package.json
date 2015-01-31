@@ -4,7 +4,7 @@
   "description": "== README",
   "main": "public/index.html",
   "scripts": {
-    "postinstall": "cd public && ../node_modules/bower/bin/bower install"
+    "postinstall": "../node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
