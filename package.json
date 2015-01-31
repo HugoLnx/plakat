@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "description": "== README",
   "main": "public/index.html",
-  "scripts": {
-    "postinstall": "../node_modules/bower/bin/bower install"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/HugoLnx/plakat.git"
