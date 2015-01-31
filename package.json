@@ -1,0 +1,21 @@
+{
+  "name": "plakat",
+  "version": "0.0.0",
+  "description": "== README",
+  "main": "public/index.html",
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/HugoLnx/plakat.git"
+  },
+  "author": "criaTIvo",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/HugoLnx/plakat/issues"
+  },
+  "dependencies": {
+        "bower": "0.6.x"
+  }
+}
