@@ -6,6 +6,7 @@
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="plakat-toolbar/plakat-toolbar.html">
 <link rel="import" href="plakat-board/plakat-board.html">
+<link rel="import" href="plakat-view/plakat-view.html">
 <link rel="import" href="plakat-data.html">
 
 <polymer-element name="plakat-app" attributes="mobile">
@@ -41,6 +42,7 @@
 				<plakat-toolbar class="core-header" mobile="{{mobile}}"></plakat-toolbar>
 				<div class="content">
 					<plakat-board id="board" posters="{{allPosters}}"></plakat-board>
+					<plakat-view poster="{{data.poster}}" mobile="{{mobile}}" hidden?="{{!viewVisible}}"></plakat-view>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>
@@ -51,6 +53,7 @@
 			page: 1,
 			allPosters: [],
 			loading: false,
+			viewVisible: true,
 
 			ready: function() {
 				this.addEventListener('back', function(evt) { this.backToMain() });
@@ -88,6 +91,7 @@
 			backToMain: function() {
 				this.data.toolbar = "main";
 				this.data.poster = {};
+				this.viewVisible = false;
 			},
 
 			beginSearch: function() {

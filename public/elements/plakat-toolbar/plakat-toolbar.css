@@ -100,6 +100,9 @@ plakat-search {
 	text-transform: none;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	-webkit-flex: 1;
+	flex: 1;
+	text-align: left;
 }
 
 #categories paper-button core-icon {
@@ -125,10 +128,9 @@ paper-dropdown paper-button {
 
 #moreCategories paper-button::shadow .button-content,
 paper-dropdown paper-button::shadow .button-content {
-	-webkit-justify-content: space-between;
-	justify-content: space-between;
+	-webkit-justify-content: initial;
+	justify-content: initial;
 }
-
 #moreDropdown {
 	-webkit-transform: translate(-8px, 8px);
 	-ms-transform: translate(-8px, 8px);

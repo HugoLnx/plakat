@@ -1,0 +1,62 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="plakat-view" attributes="mobile poster">
+	<template>
+		<style>
+			:host {
+				position: fixed;
+				display: block;
+				overflow: hidden;
+				top: 72px;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #fff;
+			}
+
+			#img {
+				-webkit-display: flex;
+				display: flex;
+				float: left;
+				width: 50%;
+				height: 100%;
+				border-right: 1px solid #ddd;
+				box-sizing: border-box;
+			}
+
+			#img img {
+				width: 100%;
+				align-self: center;
+			}
+
+			#content {
+				float: right;
+				width: 50%;
+				box-sizing: border-box;
+				padding: 16px;
+			}
+
+		</style>
+
+		<div id="img">
+			<img src="https://plakat.s3.amazonaws.com/uploaded_posters/large_imagem1.jpg">
+		</div>
+
+		<div id="content">
+			
+			<div id="title">
+				<h2>Lorem ipsum dolor sit amet.</h2>
+			</div>
+
+			<div id="desc">
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt cupiditate aperiam beatae sint id consectetur mollitia quia quasi voluptate libero minus eum illo, architecto consequuntur eaque laboriosam magnam alias cumque. ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, iusto. Voluptates reprehenderit quod, suscipit neque aliquid alias, accusamus sint, nihil hic amet temporibus ad id. Quam tempora ipsam cupiditate, quia! ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, ducimus possimus quas eos alias? Rem quasi voluptates ratione, odio, ad tenetur repudiandae vero eos vel! Veritatis sunt officia, a vel.</p>
+			</div>
+
+		</div>		
+	</template>
+	<script>
+		Polymer('plakat-view', {
+			
+		});
+	</script>
+</polymer-element>
