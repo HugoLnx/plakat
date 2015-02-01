@@ -66,7 +66,7 @@
 				this.$.main.scroller.addEventListener('scroll', function() {
 					if (this.loading) return;
 
-					if (this.$.main.scroller.scrollTop > parseInt(this.$.board.offsetHeight) * .2) {
+					if (this.$.main.scroller.scrollTop > parseInt(this.$.board.offsetHeight) * .4) {
 						this.loading = true;
 						this.page++;
 					}

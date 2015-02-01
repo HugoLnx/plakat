@@ -8,6 +8,7 @@
 			:host {
 				display: block;
 				cursor: pointer;
+				text-align: left;
 			}
 
 			paper-shadow {
@@ -26,10 +27,11 @@
 			#content {
 				padding: 16px;
 				background-color: #fff;
+				line-height: 150%;
 			}
 
 			#content h2 {
-				margin: 0 0 8px 0;
+				margin: 0 0 16px 0;
 				font-size: 24px;
 			}
 		</style>
@@ -54,17 +56,43 @@
 		</template>
 		<paper-shadow>
 			<div id="poster">
-				<img src="{{img}}">
+				<template if="{{img}}">
+					<img src="{{img}}">
+				</template>
 				<div id="content">
-					<h2>{{heading}}</h2>
-					<div id="desc">{{desc}}</div>
+					<template if="{{heading}}">
+						<h2>{{heading | wrapTitle}}</h2>
+					</template>
+					<template if="{{desc}}">
+						<div id="desc">{{desc | wrapDesc}}</div>
+					</template>
 				</div>
 			</div>
 		</paper-shadow>
 	</template>
 	<script>
 		Polymer('plakat-poster', {
+			maxTitleLength: 32,
+			maxDescLengthWithImage: 140,
+			maxDescLengthWithoutImage: 256,
 
+			wrapDesc: function(desc) {
+				var maxLength = this.img ? this.maxDescLengthWithImage : this.maxDescLengthWithoutImage;
+
+				if (desc.length > maxLength) {
+					desc = desc.substr(0, maxLength) + "...";
+				}
+
+				return desc;
+			},
+
+			wrapTitle: function(title) {
+				if (title.length > this.maxTitleLength) {
+					title = title.substr(0, this.maxTitleLength) + "...";
+				}
+
+				return title;
+			}
 		});
 	</script>
 </polymer-element>

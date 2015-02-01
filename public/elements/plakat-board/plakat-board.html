@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../plakat-spinner/plakat-spinner.html">
+<link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="plakat-poster.html">
 <script src="board.js"></script>
 
@@ -29,7 +30,7 @@
 			}
 
 			.column {
-				width: 320px;
+				width: 310px;
 				padding: 0 7px;
 			}
 
@@ -38,9 +39,13 @@
 			}
 		</style>
 
-		<template repeat="{{posters}}">
-			<plakat-poster heading="{{title}}" desc="{{description}}" img="{{ref_imagem.small.url}}"></plakat-poster>
-		</template>
+		<core-animated-pages transitions="hero-transition">
+
+			<template repeat="{{posters}}">
+				<plakat-poster heading="{{title}}" desc="{{description}}" img="{{ref_imagem.small.url}}"></plakat-poster>
+			</template>
+
+		</core-animated-pages>
 
 		<plakat-spinner id="spinner"></plakat-spinner>
 
