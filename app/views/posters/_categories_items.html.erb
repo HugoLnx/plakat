@@ -1,0 +1,9 @@
+<% %w{Design Comunicação Informática Ciências\ Sociais Só\ mais\ uma Sertanejo\ de\ raiz}.each do |category| %>
+  <li class="category-item">
+    <a href="#">
+      <div class="category-front-shadow"></div>
+      <%= category %>
+      <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div>
+    </a>
+  </li>
+<% end %>

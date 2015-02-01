@@ -4,6 +4,12 @@
 $toolbar_height: 56px;
 $toolbar_padding: 8px;
 
+@mixin paper-shadow() {
+	box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.37);
+	border-radius: 1px;
+	background-color: #fff;
+}
+
 .topbar {
 	width: 100%;
 	height: $toolbar_height + ($toolbar_padding * 2);
@@ -43,9 +49,10 @@ $toolbar_padding: 8px;
 
 	.categories {
 		float: left;
+		position: relative;
 	}
 
-	.categories-list {
+	.categories-horizontal-list {
 		display: inline-block;
 		line-height: $toolbar_height;
 
@@ -56,13 +63,33 @@ $toolbar_padding: 8px;
 			padding: 8px;
 			line-height: 24px;
 		}
+	}
 
-		.hyperlink-icon {
-			display: inline-block;
-			width: 16px;
-			height: 16px;
-			margin-left: 5px;
+	.categories-vertical-list {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin-top: $toolbar_height;
+		transform: scale(1,1) translate(0, 0) rotateX(0) rotateY(0) rotateZ(0);
+		//transform: scale(1,1);
+		transition: transform 500ms;
+		transform-origin: right top;
+
+		.category-item {
+			padding: 8px;
 		}
+
+		&.hidden-list {
+			transform: scale(0,0) translate(100%,-150%) rotateX(-180deg) rotateY(-180deg) rotateZ(-360deg);
+			//transform: scale(0,0);
+		}
+	}
+
+	.hyperlink-icon {
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-left: 5px;
 	}
 }
 
@@ -71,8 +98,8 @@ $toolbar_padding: 8px;
 $toolbar_color: #e91e63;
 
 .topbar {
+	@include user-select(none);
 	background: $toolbar_color;
-	font-size: 1.3em;
 
 	.back-home {
 		.plakat-logo svg {
@@ -81,7 +108,6 @@ $toolbar_color: #e91e63;
 	}
 	
 	.share-link {
-		@include user-select(none);
 		cursor: pointer;
 
 		.share-icon svg	{
@@ -89,6 +115,7 @@ $toolbar_color: #e91e63;
 		}
 
 		.share-label {
+			font-size: 1.3em;
 			text-transform: uppercase;
 			color: #fff;
 		}
@@ -113,41 +140,52 @@ $toolbar_color: #e91e63;
 	}
 
 	.categories {
-		.category-item,
-		.extra-categories {
-			position: relative;
-			box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.37);
-			border-radius: 1px;
-			background-color: #fff;
+		.category-item a {
 			color: $toolbar_color;
-			@include user-select(none);
-			cursor: pointer;
+			text-decoration: none;
+		}
 
-			.category-front-shadow {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				width: 0;
-				height: 0;
-				background-color: rgba(0, 0, 0, 0);
-				transition: all 200ms ease-out;
-			}
+		.categories-horizontal-list {
+			font-size: 1.3em;
 
-			&:active {
-				box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.37);
-				transition: box-shadow 200ms ease-out;
+			.category-item,
+			.extra-categories {
+				position: relative;
+				@include paper-shadow();
+				color: $toolbar_color;
+				cursor: pointer;
+
 				.category-front-shadow {
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background-color: rgba(0, 0, 0, 0.2);
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					width: 0;
+					height: 0;
+					background-color: rgba(0, 0, 0, 0);
+					transition: all 200ms ease-out;
+				}
+
+				&:active {
+					box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.37);
+					transition: box-shadow 200ms ease-out;
+					.category-front-shadow {
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background-color: rgba(0, 0, 0, 0.2);
+					}
 				}
 			}
 		}
 
 		.hyperlink-icon svg {
 				fill: #aaa;
+		}
+
+		.categories-vertical-list {
+			@include paper-shadow();
+			color: $toolbar_color;
 		}
 	}
 }
@@ -156,7 +194,7 @@ $toolbar_color: #e91e63;
 /* JAVASCRIPT CONVENIENCES */
 
 .topbar {
-	.categories {
+	.categories .categories-horizontal-list {
 		.extra-categories.hidden-item,
 		.category-item.hidden-item {display: none;}
 	}

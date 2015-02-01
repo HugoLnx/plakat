@@ -7,8 +7,8 @@ PLAKAT.ToolbarCategoriesAdjuster = (function() {
   var MAX_ITEMS_DESKTOP = 3;
   var MAX_ITEMS_MOBILE = 1;
 
-  var categoryItems = document.querySelectorAll(".category-item");
-  var categoryExtra = document.querySelector(".extra-categories");
+  var categoryItems = document.querySelectorAll(".categories-horizontal-list .category-item");
+  var categoryExtra = document.querySelector(".categories-horizontal-list .extra-categories");
   var categoryExtraNumber = categoryExtra.querySelector(".extra-categories-number");
 
   _M.adjustCategoriesToolbar = function() {

@@ -17,18 +17,15 @@
 	</div>
 	<div class="categories">
 
-		<ul class="categories-list">
-			<% %w{Design Comunicação Informática Ciências\ Sociais Só\ mais\ uma Sertanejo\ de\ raiz}.each do |category| %>
-			<li class="category-item">
-				<div class="category-front-shadow"></div>
-				<%= category %>
-				<div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div>
-		  </li>
-			<% end %>
+		<ul class="categories-horizontal-list">
+			<%= render partial: "categories_items" %>
 			<li class="extra-categories">
 				<div class="category-front-shadow"></div>
 				+<span class="extra-categories-number"></span>
-		</li>
+			</li>
+		</ul>
+		<ul class="categories-vertical-list hidden-list">
+			<%= render partial: "categories_items" %>
 		</ul>
 	</div>
 	<div class="share-link">
