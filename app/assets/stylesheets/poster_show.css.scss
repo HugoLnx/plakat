@@ -67,7 +67,7 @@ $toolbar_padding: 8px;
 
 	.categories-vertical-list {
 		position: absolute;
-		top: 0;
+		top: -48px;
 		right: 0;
 		margin-top: $toolbar_height;
 		transform: scale(1,1);
