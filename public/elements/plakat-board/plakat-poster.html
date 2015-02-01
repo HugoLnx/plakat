@@ -54,7 +54,7 @@
 		</template>
 		<paper-shadow>
 			<div id="poster">
-				<img src="{{img}}" width="{{width}}">
+				<img src="{{img}}">
 				<div id="content">
 					<h2>{{heading}}</h2>
 					<div id="desc">{{desc}}</div>
@@ -63,27 +63,8 @@
 		</paper-shadow>
 	</template>
 	<script>
-		Number.prototype.clamp = function(min, max) {
-		 	return Math.min(Math.max(this, min), max);
-		};
-
 		Polymer('plakat-poster', {
-			minLength: 0,
-			maxLength: 500,
-			minWidth: 220,
-			maxWidth: 320,
-			width: 320,
 
-			ready: function() {
-				var length = this.desc.length;
-				var varLength = this.maxLength - this.minLength;
-				var varWidth = this.maxWidth - this.minWidth;
-				var lengthRatio = (length / varLength).clamp(0, 1);
-				
-				this.width = this.minWidth + varWidth * lengthRatio;	
-
-				this.style.width = this.width + "px";
-			}
 		});
 	</script>
 </polymer-element>

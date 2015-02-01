@@ -1,14 +1,10 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../plakat-spinner/plakat-spinner.html">
 <link rel="import" href="plakat-poster.html">
 <script src="board.js"></script>
 
-<polymer-element name="plakat-board">
+<polymer-element name="plakat-board" attributes="posters">
 	<template>
-		<template id="aaa" repeat="{{page, i in pages}}">
-			<core-ajax auto url="http://www.plakat.com.br/posters.json" params='{"per_page": "30", "page": "{{i + 1}}", "term": ""}' handleAs="json" response="{{responses[i]}}" on-core-response="{{pagesResponse}}"></core-ajax>
-		</template>
 		<style>
 			:host {
 				position: relative;
@@ -31,12 +27,19 @@
 			plakat-spinner.active {
 				visibility: visible;
 			}
+
+			.column {
+				width: 320px;
+				padding: 0 7px;
+			}
+
+			plakat-poster {
+				margin: 14px 0;
+			}
 		</style>
 
-		<template repeat="{{response in responses}}">
-			<template repeat="{{response}}">
-				<plakat-poster heading="{{title}}" desc="{{description}}" img="{{ref_imagem.small.url}}"></plakat-poster>
-			</template>
+		<template repeat="{{posters}}">
+			<plakat-poster heading="{{title}}" desc="{{description}}" img="{{ref_imagem.small.url}}"></plakat-poster>
 		</template>
 
 		<plakat-spinner id="spinner"></plakat-spinner>
@@ -44,30 +47,9 @@
 	</template>
 	<script>
 		Polymer('plakat-board', {
-			loading: false,
-			responses: [],
-			pages: [''],
-
-			loadPage: function() {
-				console.log(this.loading);
-				if (this.loading) return;
-
-				this.$.spinner.classList.add('active');
-				this.loading = true;
-				this.pages.push('');
-			},
-
-			pagesResponse: function() {
-				this.$.spinner.classList.remove('active');
-				this.loading = false;
-			},
-
-			responsesChanged: function() {
-				var self = this;
-
-				setTimeout(function() {
-					new Board(self, self.shadowRoot.querySelectorAll('plakat-poster'), 16);
-				}, 1);
+			postersChanged: function() {
+				var board = new Board(this, this.shadowRoot.querySelectorAll('plakat-poster'));
+				board.arrange();
 			}
 		});
 	</script>

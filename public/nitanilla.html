@@ -58,59 +58,89 @@
 
 <script type="text/javascript">
 (function() {
-	var Poster = function(node) {
-
-	}
-
-	var Board = function(posters) {
+	var Board = function(container, posters) {
+		this.container = container;
+		this.columnCount = 1;
+		this.column = null;
+		this.originalPosters = [];
 		this.posters = [];
+		this.columns = [];
+		this.currentColumn = 0;
 
-		// for (var i = 0; i < posters.length; )
-	}
-
-	Board.prototype.addPoster = function(poster) {
-		this.posters.push(poster);
-	};
-})();
-
-var posters = document.querySelectorAll('.poster');
-
-function arrange() {
-	var currentColumn = 0;
-	var iposters = posters;
-	var container = document.querySelector('#container');
-	var placedColumns = document.querySelectorAll('.column');
-
-	for (var i = 0; i < placedColumns.length; i++) {
-		container.removeChild(placedColumns[i]);
-	}
-
-	var column = document.createElement('div');
-	column.setAttribute('class', 'column');
-	container.appendChild(column);
-
-	var columnCount = parseInt(container.offsetWidth / column.scrollWidth);
-
-	for (var i = 0; i < columnCount - 1; i++) {
-		var column = document.createElement('div');
-		column.setAttribute('class', 'column');
-		container.appendChild(column);
-	}
-
-	var columns = document.querySelectorAll('.column');
-
-	for (var i = 0; i < iposters.length; i++) {
-		if (currentColumn == columns.length) {
-			currentColumn = 0;
+		for (var i = 0; i < posters.length; i++) {
+			this.originalPosters.push(posters[i]);
 		}
 
-		columns[currentColumn].appendChild(iposters[i]);
-		currentColumn++;
+		window.addEventListener('resize', (function() {
+			this.arrange();
+		}).bind(this));
 	}
-}
 
-arrange();
-window.addEventListener('resize', arrange);
+	// Add poster
+	Board.prototype.addPoster = function(poster) {
+		this.originalPosters.push(poster);
+		this.posters.push(poster);
+		this.columns[this.currentColumn].appendChild(poster);
+	}
+
+	// Create column
+	Board.prototype.createColumn = function() {
+		var column = document.createElement('div');
+		column.setAttribute('class', 'column');
+
+		this.column = this.container.appendChild(column);
+		this.columns.push(this.column);
+
+		return column;
+	}
+
+	// Remove columns
+	Board.prototype.removeColumns = function() {
+		var columns = this.container.querySelectorAll('.column');
+
+		for (var i = 0; i < columns.length; i++) {
+			this.container.removeChild(columns[i]);
+		}
+
+		this.columns = [];
+	}
+
+	// Arrange
+	Board.prototype.arrange = function() {
+		this.posters = [];
+		this.currentColumn = 0;
+
+		this.removeColumns();
+		this.createColumn();
+
+		var columnCount = parseInt(this.container.offsetWidth / this.column.scrollWidth);
+
+		console.log(columnCount);
+
+		for (var i = 0; i < columnCount - 1; i++) {
+			this.createColumn();
+		}
+
+		for (var i = 0; i < this.originalPosters.length; i++) {
+			var poster = this.originalPosters[i];
+
+			this.posters.push(poster);
+
+			if (this.currentColumn == this.columns.length) {
+				this.currentColumn = 0;
+			}
+
+			this.columns[this.currentColumn].appendChild(poster);
+			this.currentColumn++;
+		}
+	}	
+
+	var container = document.querySelector('#container');
+	var posters = document.querySelectorAll('.poster');
+	var board = new Board(container, posters);
+
+	board.arrange();
+})();
 </script>
 
 </body>

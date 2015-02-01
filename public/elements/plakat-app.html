@@ -3,12 +3,14 @@
 <link rel="import" href="../bower_components/pvc-globals/pvc-globals.html">
 <link rel="import" href="../bower_components/core-drawer-panel/core-drawer-panel.html">
 <link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="plakat-toolbar/plakat-toolbar.html">
 <link rel="import" href="plakat-board/plakat-board.html">
 <link rel="import" href="plakat-data.html">
 
 <polymer-element name="plakat-app" attributes="mobile">
 	<template>
+		<core-ajax id="postersAjax" url="http://www.plakat.com.br/posters.json" params='{"term": "", "per_page": 30, "page": {{page}}}' handleAs="json" response="{{posters}}" on-core-response="{{postersResponse}}"></core-ajax>
 		<style>
 			:host {
 				position: fixed;
@@ -38,7 +40,7 @@
 			<core-header-panel id="main" mode="seamed" main>
 				<plakat-toolbar class="core-header" mobile="{{mobile}}"></plakat-toolbar>
 				<div class="content">
-					<plakat-board id="board"></plakat-board>
+					<plakat-board id="board" posters="{{allPosters}}"></plakat-board>
 				</div>
 			</core-header-panel>
 		</core-drawer-panel>
@@ -46,6 +48,10 @@
 	</template>
 	<script>
 		Polymer('plakat-app', {
+			page: 1,
+			allPosters: [],
+			loading: false,
+
 			ready: function() {
 				this.addEventListener('back', function(evt) { this.backToMain() });
 				this.addEventListener('begin-search', function(evt) { this.beginSearch() });
@@ -55,15 +61,28 @@
 				this.addEventListener('send-poster', function(evt) { this.sendPoster(evt.detail) });
 				this.addEventListener('toggle-panel', function() { this.togglePanel() });
 
-				var board = this.$.board;
+				this.$.postersAjax.go();
 
 				this.$.main.scroller.addEventListener('scroll', function() {
-					console.log(this.scrollTop);
-					console.log(board.style.height);
-					if (this.scrollTop > parseInt(board.style.height) * .2) {
-						board.loadPage();
+					if (this.loading) return;
+
+					if (this.$.main.scroller.scrollTop > parseInt(this.$.board.offsetHeight) * .2) {
+						this.loading = true;
+						this.page++;
 					}
-				});
+				}.bind(this));
+			},
+
+			pageChanged: function() {
+				this.$.postersAjax.go();
+			},
+
+			postersResponse: function() {
+				this.loading = false;
+
+				for (var i = 0; i < this.posters.length; i++) {
+					this.allPosters.push(this.posters[i]);
+				}
 			},
 
 			backToMain: function() {
