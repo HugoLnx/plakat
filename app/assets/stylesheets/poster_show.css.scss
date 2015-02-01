@@ -10,14 +10,29 @@ $toolbar_padding: 8px;
 	background-color: #fff;
 }
 
+@mixin flex($value) {
+	-ms-flex: $value;
+	-webkit-flex: $value;
+	-moz-flex: $value;
+	flex: $value;
+}
+
+@mixin display-flex() {
+	-ms-display: flex;
+	-webkit-display: flex;
+	-moz-display: flex;
+	display: flex;
+}
+
 .topbar {
 	width: 100%;
 	height: $toolbar_height + ($toolbar_padding * 2);
 	padding: 8px;
 	box-sizing: border-box;
+	@include display-flex();
 
 	.back-home {
-		float: left;
+		@include flex(none);
 
 		.plakat-logo {
 			height: $toolbar_height;
@@ -27,8 +42,8 @@ $toolbar_padding: 8px;
 	}
 	
 	.share-link {
+		@include flex(none);
 		position: relative;
-		float: right;
 		height: $toolbar_height;
 		line-height: $toolbar_height;
 		padding: 0 10px;
@@ -48,20 +63,48 @@ $toolbar_padding: 8px;
 	}
 
 	.categories {
-		float: left;
+		align-items: center;
+		@include flex(1);
+		@include display-flex();
+	}
+
+	.categories-wrapper {
 		position: relative;
 	}
 
 	.categories-horizontal-list {
-		display: inline-block;
+		@include display-flex();
 		line-height: $toolbar_height;
 
 		.category-item,
 		.extra-categories {
-			display: inline-block;
 			height: 24px;
 			padding: 8px;
+			margin: 0 2px;
 			line-height: 24px;
+		}
+
+		.extra-categories {
+			display: inline-block;
+			@include flex(none);
+		}
+
+		.category-item {
+			a {
+				@include display-flex();
+			}
+
+			.category-label {
+				@include flex(1);
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+
+			}
+
+			.hyperlink-icon {
+				@include flex(none);
+			}
 		}
 	}
 
@@ -110,6 +153,12 @@ $toolbar_color: #e91e63;
 
 		.share-icon svg	{
 			fill: #fff;
+		}
+
+		@media(max-width: 800px) {
+			.share-label {
+				display: none;
+			}
 		}
 
 		.share-label {

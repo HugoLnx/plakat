@@ -12,7 +12,7 @@ PLAKAT.ToolbarCategoriesAdjuster = (function() {
   var categoryExtraNumber = categoryExtra.querySelector(".extra-categories-number");
 
   _M.adjustCategoriesToolbar = function() {
-    var isDesktop = document.documentElement.scrollWidth > 640;
+    var isDesktop = window.innerWidth > 640;
     if (isDesktop && categoryItems.length > MAX_ITEMS_DESKTOP) {
       reduceCategoriesVisibleTo(MAX_ITEMS_DESKTOP)
     } else if (categoryItems.length > MAX_ITEMS_MOBILE) {
