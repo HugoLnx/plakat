@@ -10,7 +10,7 @@
 
 <polymer-element name="plakat-app" attributes="mobile">
 	<template>
-		<core-ajax id="postersAjax" url="http://www.plakat.com.br/posters.json" params='{"term": "", "per_page": 30, "page": {{page}}}' handleAs="json" response="{{posters}}" on-core-response="{{postersResponse}}"></core-ajax>
+		<core-ajax id="postersAjax" url="/posters.json" params='{"term": "", "per_page": 30, "page": {{page}}}' handleAs="json" response="{{posters}}" on-core-response="{{postersResponse}}"></core-ajax>
 		<style>
 			:host {
 				position: fixed;
