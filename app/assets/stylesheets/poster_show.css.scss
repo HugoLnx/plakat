@@ -67,11 +67,10 @@ $toolbar_padding: 8px;
 
 	.categories-vertical-list {
 		position: absolute;
-		top: 0;
+		top: -45px;
 		right: 0;
 		margin-top: $toolbar_height;
-		transform: scale(1,1) translate(0, 0) rotateX(0) rotateY(0) rotateZ(0);
-		//transform: scale(1,1);
+		transform: scale(1,1) translate(0, 45px);
 		transition: transform 500ms;
 		transform-origin: right top;
 
@@ -80,8 +79,7 @@ $toolbar_padding: 8px;
 		}
 
 		&.hidden-list {
-			transform: scale(0,0) translate(100%,-150%) rotateX(-180deg) rotateY(-180deg) rotateZ(-360deg);
-			//transform: scale(0,0);
+			transform: scale(0,0) translate(0, 0);
 		}
 	}
 
