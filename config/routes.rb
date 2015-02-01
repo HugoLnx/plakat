@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources  :posters, only: %w{index create show new}
+  resources  :posters,
+    only: %w{index create show new},
+    path: "plaks"
   resources  :categories, only: "index" 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
