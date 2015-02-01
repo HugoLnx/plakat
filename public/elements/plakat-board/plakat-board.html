@@ -52,9 +52,21 @@
 	</template>
 	<script>
 		Polymer('plakat-board', {
-			postersChanged: function() {
-				var board = new Board(this, this.shadowRoot.querySelectorAll('plakat-poster'));
-				board.arrange();
+			board: null,
+
+			postersChanged: function(changed) {
+				if (changed && !this.board) {
+					this.board = new Board(this, this.shadowRoot.querySelectorAll('plakat-poster'));
+					this.board.arrange();
+				}
+
+				if (changed[0].index > 0) {
+					var posters = this.shadowRoot.querySelectorAll(':not(div) plakat-poster');
+
+					for (var i = 0; i < posters.length; i++) {
+						this.board.addPoster(posters[i]);
+					}
+				}
 			}
 		});
 	</script>

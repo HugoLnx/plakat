@@ -20,9 +20,14 @@ var Board = function(container, posters) {
 
 // Add poster
 Board.prototype.addPoster = function(poster) {
+	if (this.currentColumn == this.columns.length) {
+		this.currentColumn = 0;
+	}
+
 	this.originalPosters.push(poster);
 	this.posters.push(poster);
 	this.columns[this.currentColumn].appendChild(poster);
+	this.currentColumn++;
 }
 
 // Create column
