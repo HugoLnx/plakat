@@ -10,6 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require reset-meyer
  *= require_self
  */
+body{font-family: RobotoDraft, sans-serif;}
+
+@mixin user-select($value) {
+  -webkit-user-select: $value;
+     -moz-user-select: $value;
+      -ms-user-select: $value;
+          user-select: $value;
+}
+

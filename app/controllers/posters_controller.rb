@@ -41,6 +41,7 @@ class PostersController < ApplicationController
         :date_expiration,
         :disabled
          ] }
+      format.html
     end
   end
 

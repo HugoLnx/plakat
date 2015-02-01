@@ -1,0 +1,36 @@
+<% content_for :css do %>
+  <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en', media: 'all'%>
+  <%= stylesheet_link_tag 'poster_show', media: 'all', 'data-turbolinks-track' => true %>
+<% end %>
+
+<% content_for :js do %>
+  <%= javascript_include_tag 'poster_show' %>
+<% end %>
+
+<div class="topbar">
+	<div class="back-home">
+		<div class="plakat-logo">
+			<a href="/">
+				<%= render partial: "layouts/plakat_svg" %>
+			</a>
+		</div>
+	</div>
+	<div class="categories">
+		<ul class="categories-list">
+			<li class="category-item">Design           <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
+			<li class="category-item">Comunicação      <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
+			<li class="category-item">Informática      <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
+			<li class="category-item">Ciências Sociais <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
+			<li class="category-item">Só mais uma      <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
+			<li class="category-item">Sertanejo de raiz<div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
+			<li class="extra-categories">+<span class="extra-categories-number"></span></li>
+		</ul>
+	</div>
+	<div class="share-link">
+		<span class="share-link-white-front"></span>
+		<div class="share-icon">
+			<%= render partial: "layouts/share_svg" %>
+		</div>
+		<span class="share-label">Compartilhar</span>
+	</div>
+</div>
