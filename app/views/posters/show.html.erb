@@ -16,14 +16,19 @@
 		</div>
 	</div>
 	<div class="categories">
+
 		<ul class="categories-list">
-			<li class="category-item">Design           <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
-			<li class="category-item">Comunicação      <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
-			<li class="category-item">Informática      <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
-			<li class="category-item">Ciências Sociais <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
-			<li class="category-item">Só mais uma      <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
-			<li class="category-item">Sertanejo de raiz<div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div></li>
-			<li class="extra-categories">+<span class="extra-categories-number"></span></li>
+			<% %w{Design Comunicação Informática Ciências\ Sociais Só\ mais\ uma Sertanejo\ de\ raiz}.each do |category| %>
+			<li class="category-item">
+				<div class="category-front-shadow"></div>
+				<%= category %>
+				<div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div>
+		  </li>
+			<% end %>
+			<li class="extra-categories">
+				<div class="category-front-shadow"></div>
+				+<span class="extra-categories-number"></span>
+		</li>
 		</ul>
 	</div>
 	<div class="share-link">

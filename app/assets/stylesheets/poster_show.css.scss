@@ -115,10 +115,35 @@ $toolbar_color: #e91e63;
 	.categories {
 		.category-item,
 		.extra-categories {
+			position: relative;
 			box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.37);
 			border-radius: 1px;
 			background-color: #fff;
 			color: $toolbar_color;
+			@include user-select(none);
+			cursor: pointer;
+
+			.category-front-shadow {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 0;
+				height: 0;
+				background-color: rgba(0, 0, 0, 0);
+				transition: all 200ms ease-out;
+			}
+
+			&:active {
+				box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.37);
+				transition: box-shadow 200ms ease-out;
+				.category-front-shadow {
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(0, 0, 0, 0.2);
+				}
+			}
 		}
 
 		.hyperlink-icon svg {
