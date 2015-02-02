@@ -40,12 +40,12 @@
 			},
 
 			ready: function() {
-				this.data.toolbar = "view";
+				this.data.toolbar = "main";
 			},
 
 			toolbarChanged: function() {
 				var toolbar = this.data.toolbar;
-       			this.injectBoundHTML('<plakat-toolbar-' + toolbar + ' heading="{{heading}}" mobile="{{mobile}}"></plakat-toolbar-' + toolbar + '>', this.$.toolbarContainer);
+       	this.injectBoundHTML('<plakat-toolbar-' + toolbar + ' heading="{{heading}}" mobile="{{mobile}}"></plakat-toolbar-' + toolbar + '>', this.$.toolbarContainer);
 			}
 		});
 	</script>

@@ -11,7 +11,7 @@
 
 <polymer-element name="plakat-app" attributes="mobile">
 	<template>
-		<core-ajax id="postersAjax" url="/posters.json" params='{"term": "", "per_page": 30, "page": {{page}}}' handleAs="json" response="{{posters}}" on-core-response="{{postersResponse}}"></core-ajax>
+		<core-ajax id="postersAjax" url="/plaks.json" params='{"term": "", "per_page": 30, "page": {{page}}}' handleAs="json" response="{{posters}}" on-core-response="{{postersResponse}}"></core-ajax>
 		<style>
 			:host {
 				position: fixed;
@@ -53,7 +53,7 @@
 			page: 1,
 			allPosters: [],
 			loading: false,
-			viewVisible: true,
+			viewVisible: false,
 
 			ready: function() {
 				this.addEventListener('back', function(evt) { this.backToMain() });
@@ -84,6 +84,7 @@
 				this.loading = false;
 
 				for (var i = 0; i < this.posters.length; i++) {
+          this.posters[i].arrayInx = this.allPosters.length;
 					this.allPosters.push(this.posters[i]);
 				}
 			},
@@ -103,9 +104,10 @@
 				this.data.category = category;
 			},
 
-			viewPoster: function(poster) {
+			viewPoster: function(posterInx) {
+				this.data.poster = this.allPosters[posterInx];
 				this.data.toolbar = "view";
-				this.data.poster = poster;
+        this.viewVisible = true;
 			},
 
 			createPoster: function(poster) {
@@ -118,7 +120,6 @@
 			},
 
 			togglePanel: function() {
-				console.log('lol');
 				this.$.panel.togglePanel();
 			}
 		});

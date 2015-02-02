@@ -2,7 +2,7 @@
 <link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
 <link rel="import" href="../../bower_components/core-tooltip/core-tooltip.html">
 
-<polymer-element name="plakat-poster" attributes="heading desc img mobile">
+<polymer-element name="plakat-poster" attributes="heading desc img mobile arrayInx">
 	<template>
 		<style>
 			:host {
@@ -54,7 +54,7 @@
 				}
 			</style>
 		</template>
-		<paper-shadow>
+    <paper-shadow on-tap="{{viewPoster}}" data-posterinx="{{arrayInx}}">
 			<div id="poster">
 				<template if="{{img}}">
 					<img src="{{img}}">
@@ -92,7 +92,12 @@
 				}
 
 				return title;
-			}
+			},
+
+      viewPoster: function(evt, detail, sender) {
+        var posterInx = sender.getAttribute("data-posterinx");
+        this.fire("view-poster", posterInx);
+      }
 		});
 	</script>
 </polymer-element>
