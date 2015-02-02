@@ -90,6 +90,7 @@
 			},
 
 			backToMain: function() {
+        history.pushState(null, null,"/")
 				this.data.toolbar = "main";
 				this.data.poster = {};
 				this.viewVisible = false;
@@ -106,6 +107,7 @@
 
 			viewPoster: function(posterInx) {
 				this.data.poster = this.allPosters[posterInx];
+        history.pushState(null, this.data.poster.title,"/plaks/" + this.data.poster.id)
 				this.data.toolbar = "view";
         this.viewVisible = true;
 			},
