@@ -107,6 +107,7 @@
 
 			viewPoster: function(posterInx) {
 				this.data.poster = this.allPosters[posterInx];
+        console.log(this.data.poster.categories);
         history.pushState(null, this.data.poster.title,"/plaks/" + this.data.poster.id)
 				this.data.toolbar = "view";
         this.viewVisible = true;

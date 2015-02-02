@@ -6,7 +6,12 @@ class PostersController < ApplicationController
       .per(params[:per_page])
       .where("date_expiration >= ? AND posters.disabled = ? ", Time.now, false )
     respond_to do |format|
-      format.json{ render json: @posters , :only => [:id, :title , :description, :date_event, :ref_imagem] }
+      format.json{ render json: @posters ,
+        :only => [:id, :title , :description, :date_event, :ref_imagem],
+        :include => {
+          :categories => {only: :name}
+        }
+      }
     end
   end
 
@@ -27,9 +32,13 @@ class PostersController < ApplicationController
   end
 
   def show
-    @poster = Poster.find(params[:id])
+    @poster = Poster.includes(:categories).find(params[:id])
     respond_to do |format|
-      format.json{ render json: @poster , :only => [
+      format.json{ render json: @poster,
+      :include => {
+        :categories => {only: :name}
+      },
+      :only => [
         :title, 
         :description, 
         :date_event, 
@@ -39,8 +48,8 @@ class PostersController < ApplicationController
         :visibility_description,
         :visibility_date_event,
         :date_expiration,
-        :disabled
-         ] }
+        :disabled,
+      ]}
       format.html
     end
   end

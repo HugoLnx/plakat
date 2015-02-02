@@ -71,3 +71,20 @@ task downloadimg: :environment do
     `wget https://plakat.s3.amazonaws.com/uploaded_posters/small_imagem#{img}.jpg &`
     `wget https://plakat.s3.amazonaws.com/uploaded_posters/large_imagem#{img}.jpg &`
 end
+
+desc "set random categories"
+task set_categories: :environment do
+  categories = %w{Design Informática UFC Big\ Brother\ Brasil Categoria\ 1 Categoria\ 2 Categoria\ 3}.map do |name|
+    c = Category.find_or_initialize_by(name: name)
+    c.disabled = false
+    c.dt_creation = DateTime.now
+    c.save!
+    c
+  end
+
+
+  Poster.all.each do |poster|
+    poster.categories = categories.sample(Random.rand(categories.size+1))
+    poster.save!
+  end
+end
