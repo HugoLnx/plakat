@@ -15,7 +15,7 @@ PLAKAT.ToolbarCategoriesAdjuster = (function() {
     var isDesktop = window.innerWidth > 640;
     if (isDesktop && categoryItems.length > MAX_ITEMS_DESKTOP) {
       reduceCategoriesVisibleTo(MAX_ITEMS_DESKTOP)
-    } else if (categoryItems.length > MAX_ITEMS_MOBILE) {
+    } else if (!isDesktop && categoryItems.length > MAX_ITEMS_MOBILE) {
       reduceCategoriesVisibleTo(MAX_ITEMS_MOBILE)
     }
   };
@@ -29,7 +29,13 @@ PLAKAT.ToolbarCategoriesAdjuster = (function() {
       var categoryItem = categoryItems[i];
       categoryItem.classList.add(HIDDEN_CLASS);
     }
-    categoryExtra.classList.remove(HIDDEN_CLASS);
+    console.log(qntCategories);
+    console.log(categoryItems.length);
+    if (qntCategories === categoryItems.length) {
+      categoryExtra.classList.add(HIDDEN_CLASS);
+    } else {
+      categoryExtra.classList.remove(HIDDEN_CLASS);
+    }
     categoryExtraNumber.textContent = categoryItems.length - qntCategories;
   }
 
