@@ -103,5 +103,7 @@ RSpec.describe PostersController, :type => :controller do
       end
     end
 
+    it "order posters"
+
   end
 end

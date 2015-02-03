@@ -5,6 +5,7 @@ class PostersController < ApplicationController
       .page(params[:page])
       .per(params[:per_page])
       .where("date_expiration >= ? AND posters.disabled = ? ", Time.now, false )
+      .order(created_at: :desc)
     respond_to do |format|
       format.json{ render json: @posters ,
         :only => [:id, :title , :description, :date_event, :ref_imagem],
