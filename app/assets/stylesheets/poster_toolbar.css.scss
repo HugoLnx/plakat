@@ -8,20 +8,6 @@ $toolbar_padding: 8px;
 	background-color: #fff;
 }
 
-@mixin flex($value) {
-	-ms-flex: $value;
-	-webkit-flex: $value;
-	-moz-flex: $value;
-	flex: $value;
-}
-
-@mixin display-flex() {
-	-ms-display: flex;
-	-webkit-display: flex;
-	-moz-display: flex;
-	display: flex;
-}
-
 .topbar {
 	width: 100%;
 	height: $toolbar_height + ($toolbar_padding * 2);

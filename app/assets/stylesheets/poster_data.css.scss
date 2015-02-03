@@ -1,4 +1,11 @@
+/* POSITIONING */
+html, body {
+	height: 100%;
+	min-height: 100%;
+}
+
 .plak {
+	overflow: hidden;
   width: 100%;
   box-sizing: border-box;
 
@@ -9,23 +16,50 @@
   }
 
   @media(min-width: 641px) {
+		position: fixed;
+		top: $toolbar_height + $toolbar_padding * 2;
+		left: 0;
+		height: 100%;
+		display: block;
+
+    .plak-image {
+			float: left;
+			@include display-flex();
+			width: 50%;
+			height: 100%;
+			border-right: 1px solid #ddd;
+			box-sizing: border-box;
+		}
+
+
     .plak-image img {
-      max-width: 50%;
-      max-height: 540px;
-      float: left;
-      margin-right: 16px;
-      margin-bottom: 16px;
+			width: 100%;
+			align-self: center;
+			margin-top: -72px;
     }
-  }
 
-  .plak-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    padding: 16px;
-    box-sizing: border-box;
-  }
+		.plak-content {
+			float: right;
+			width: 50%;
+			box-sizing: border-box;
 
-  .plak-description {
-    padding: 16px;
+			.plak-title {
+				box-sizing: border-box;
+			}
+		}
   }
+}
+
+/* DECORATING */
+.plak {
+	.plak-content {
+		padding: 16px;
+	}
+
+	.plak-title {
+		font-size: 1.5em;
+		font-weight: bold;
+		margin-top: 20px;
+		margin-bottom: 8px;
+	}
 }
