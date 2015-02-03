@@ -1,4 +1,5 @@
 @import "compass";
+@import "compass/css3";
 
 @mixin flex($value) {
 	-ms-flex: $value;

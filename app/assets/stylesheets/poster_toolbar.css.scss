@@ -3,8 +3,8 @@ $toolbar_height: 56px;
 $toolbar_padding: 8px;
 
 @mixin paper-shadow() {
-	box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.37);
-	border-radius: 1px;
+	@include box-shadow(0px 1px 4px 0 rgba(0, 0, 0, 0.37));
+	@include border-radius(1px);
 	background-color: #fff;
 }
 
@@ -95,18 +95,18 @@ $toolbar_padding: 8px;
 	.categories-vertical-list {
 		position: absolute;
 		top: 0;
-		right: 0;
 		margin-top: $toolbar_height;
-		transform: scale(1,1) translate(0, 0) rotateX(0) rotateY(0) rotateZ(0);
-		transition: transform 500ms;
-		transform-origin: right top;
+		@include transform(scale(1,1) translate(0, 0) rotateX(0) rotateY(0) rotateZ(0));
+		@include transition(transform 500ms);
+		@include apply-origin(right top, false);
+		z-index: 1;
 
 		.category-item {
 			padding: 8px;
 		}
 
 		&.hidden-list {
-			transform: scale(0,0) translate(100%,-150%) rotateX(-180deg) rotateY(-180deg) rotateZ(-360deg);
+			@include transform(scale(0,0) translate(100%,-150%) rotateX(-180deg) rotateY(-180deg) rotateZ(-360deg));
 		}
 	}
 
@@ -139,12 +139,6 @@ $toolbar_color: #e91e63;
 			fill: #fff;
 		}
 
-		@media(max-width: 800px) {
-			.share-label {
-				display: none;
-			}
-		}
-
 		.share-label {
 			font-size: 1.3em;
 			text-transform: uppercase;
@@ -158,7 +152,7 @@ $toolbar_color: #e91e63;
 			width: 0;
 			height: 0;
 			background-color: rgba(255, 255, 255, 0);
-			transition: all 200ms ease-out;
+			@include transition(all 200ms ease-out);
 		}
 
 		&:active .share-link-white-front {
@@ -179,6 +173,10 @@ $toolbar_color: #e91e63;
 		.categories-horizontal-list {
 			font-size: 1.3em;
 
+			.extra-categories-number:before {
+				content: "+";
+			}
+
 			.category-item,
 			.extra-categories {
 				position: relative;
@@ -193,12 +191,12 @@ $toolbar_color: #e91e63;
 					width: 0;
 					height: 0;
 					background-color: rgba(0, 0, 0, 0);
-					transition: all 200ms ease-out;
+					@include transition(all 200ms ease-out);
 				}
 
 				&:active {
-					box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.37);
-					transition: box-shadow 200ms ease-out;
+					@include box-shadow(0 8px 12px 0 rgba(0, 0, 0, 0.37));
+					@include transition(box-shadow 200ms ease-out);
 					.category-front-shadow {
 						top: 0;
 						left: 0;
@@ -226,7 +224,42 @@ $toolbar_color: #e91e63;
 
 .topbar {
 	.categories .categories-horizontal-list {
-		.extra-categories.hidden-item,
-		.category-item.hidden-item {display: none;}
+		.hidden-item {display: none;}
+	}
+}
+
+/* MEDIA QUERIES */
+.topbar {
+	@media(min-width: 641px) {
+		.categories-vertical-list {
+			right: 0;
+		}
+	}
+
+	@media(max-width: 640px) {
+		.categories-wrapper {
+			width: 100%;
+		}
+
+		.categories-vertical-list {
+			left: 0;
+
+			&.hidden-list {
+				display: none;
+			}
+		}
+
+		.categories-horizontal-list {
+			.category-item {
+				display: none;
+			}
+		}
+	}
+
+
+	@media(max-width: 800px) {
+		.share-link .share-label {
+			display: none;
+		}
 	}
 }
