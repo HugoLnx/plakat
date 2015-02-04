@@ -14,4 +14,10 @@ class Poster < ActiveRecord::Base
     end
     query
   end
+
+  def have_image?(type)
+    @poster.ref_imagem &&
+      @poster.ref_imagem.public_send(type.to_sym) &&
+      @poster.ref_imagem.public_send(type.to_sym).url
+  end
 end

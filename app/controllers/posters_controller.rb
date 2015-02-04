@@ -34,6 +34,7 @@ class PostersController < ApplicationController
 
   def show
     @poster = Poster.includes(:categories).find(params[:id])
+    @image_url = @poster.ref_imagem.large.url
     respond_to do |format|
       format.json{ render json: @poster,
       :include => {

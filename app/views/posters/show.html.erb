@@ -38,10 +38,12 @@
 	</div>
 </div>
 
-<div class="plak">
-	<div class="plak-image">
-		<img src="<%= @poster.ref_imagem.large.url %>"></img>
-	</div>
+<div class="plak <%= image_presence_class(@image_url) %>">
+	<% if @image_url %>
+		<div class="plak-image">
+			<img src="<%= @image_url %>"></img>
+		</div>
+	<% end -%>
 
 	<div class="plak-content">
 		<h2 class="plak-title"><%= @poster.title %></h2>

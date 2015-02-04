@@ -39,7 +39,6 @@ html, body {
     }
 
 		.plak-content {
-			float: right;
 			width: 50%;
 			box-sizing: border-box;
 
@@ -48,6 +47,24 @@ html, body {
 			}
 		}
   }
+}
+
+.plak {
+	&.with-image {
+		.plak-content {
+			float: right;
+		}
+	}
+
+	&.without-image {
+		.plak-content {
+			height: 100%;
+			min-height: 100%;
+			margin: 0 auto;
+			border-left: 1px solid #ddd;
+			border-right: 1px solid #ddd;
+		}
+	}
 }
 
 /* DECORATING */
