@@ -6,5 +6,6 @@ if (typeof LNX_UTILS.BrowserUtils === "undefined") LNX_UTILS.BrowserUtils = {};
 
   BrowserUtils.reloadPage = function() {
     document.location.href = document.location.href;
+    document.location.reload();
   };  
 }(LNX_UTILS));
