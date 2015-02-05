@@ -56,6 +56,7 @@
 			viewVisible: false,
 
 			ready: function() {
+        var app = this;
 				this.addEventListener('back', function(evt) { this.backToMain() });
 				this.addEventListener('begin-search', function(evt) { this.beginSearch() });
 				this.addEventListener('change-category', function(evt) { this.changeCategory(evt.detail) });
@@ -63,6 +64,34 @@
 				this.addEventListener('create-poster', function(evt) { this.createPoster(evt.detail) });
 				this.addEventListener('send-poster', function(evt) { this.sendPoster(evt.detail) });
 				this.addEventListener('toggle-panel', function() { this.togglePanel() });
+
+        var ROUTES = [
+          {
+            pattern: /^\/$/,
+            callback: function(event) {
+              app.backToMain(true);
+            }
+          },
+
+          {
+            pattern: /^\/plaks\/\d+$/,
+            callback: function(event) {
+              var posterInx = event.state;
+              app.viewPoster(posterInx, true);
+            }
+          },
+
+        ];
+
+        window.onpopstate = function(event) {
+          for(var i = 0; i<ROUTES.length; i++) {
+            var route = ROUTES[i];
+            if (location.pathname.match(route.pattern)) {
+              route.callback(event);
+              return true;
+            }
+          }
+        };
 
 				this.$.postersAjax.go();
 
@@ -89,8 +118,10 @@
 				}
 			},
 
-			backToMain: function() {
-        history.pushState(null, null,"/")
+			backToMain: function(backing) {
+        if (!backing) {
+          history.pushState(null, "Plakat: Main","/")
+        }
 				this.data.toolbar = "main";
 				this.data.poster = {};
 				this.viewVisible = false;
@@ -105,10 +136,11 @@
 				this.data.category = category;
 			},
 
-			viewPoster: function(posterInx) {
+			viewPoster: function(posterInx, backing) {
 				this.data.poster = this.allPosters[posterInx];
-        console.log(this.data.poster.categories);
-        history.pushState(null, this.data.poster.title,"/plaks/" + this.data.poster.id)
+        if (!backing) {
+          history.pushState(posterInx, this.data.poster.title, "/plaks/" + this.data.poster.id)
+        }
 				this.data.toolbar = "view";
         this.viewVisible = true;
 			},
