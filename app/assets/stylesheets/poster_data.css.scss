@@ -25,10 +25,11 @@ html, body {
     .plak-image {
 			float: left;
 			@include display-flex();
-			width: 50%;
+			max-width: 50%;
 			height: 100%;
 			border-right: 1px solid #ddd;
 			box-sizing: border-box;
+			background-color: #fff;
 		}
 
 
@@ -39,7 +40,6 @@ html, body {
     }
 
 		.plak-content {
-			width: 50%;
 			box-sizing: border-box;
 
 			.plak-title {
@@ -51,13 +51,16 @@ html, body {
 
 .plak {
 	&.with-image {
+		background-color: #FFEFF3;
 		.plak-content {
-			float: right;
+			overflow: hidden;
 		}
 	}
 
 	&.without-image {
 		.plak-content {
+			background-color: #FFEFF3;
+			width: 50%;
 			height: 100%;
 			min-height: 100%;
 			margin: 0 auto;
@@ -69,6 +72,7 @@ html, body {
 
 /* DECORATING */
 .plak {
+
 	.plak-content {
 		padding: 16px;
 	}
