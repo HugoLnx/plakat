@@ -36,6 +36,7 @@ class PostersController < ApplicationController
     @poster = Poster.includes(:categories).find(params[:id])
     @image_url = @poster.ref_imagem.large.url
     respond_to do |format|
+      format.html
       format.json{ render json: @poster,
       :include => {
         :categories => {only: :name}
@@ -52,7 +53,6 @@ class PostersController < ApplicationController
         :date_expiration,
         :disabled,
       ]}
-      format.html
     end
   end
 
