@@ -7,6 +7,15 @@
   <%= javascript_include_tag 'poster_show' %>
 <% end %>
 
+<% content_for :metatags do %>
+	<!-- for Facebook -->          
+	<meta property="og:title" content="<%= @poster.title %>" />
+	<meta property="og:type" content="article" />
+	<meta property="og:image" content="<%= @image_url %>" />
+	<meta property="og:url" content="<%= request.original_url %>" />
+	<meta property="og:description" content="<%= @poster.description %>" />
+<% end %>
+
 <div class="topbar">
 	<div class="back-home">
 		<div class="plakat-logo">
