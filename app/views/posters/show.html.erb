@@ -16,46 +16,19 @@
 	<meta property="og:description" content="<%= @poster.description %>" />
 <% end %>
 
-<div class="topbar">
-	<div class="back-home">
-		<div class="plakat-logo">
-			<a href="/">
-				<%= render partial: "layouts/plakat_svg" %>
-			</a>
-		</div>
-	</div>
-	<div class="categories">
-		<div class="categories-wrapper">
-		<ul class="categories-horizontal-list">
-			<%= render partial: "categories_items" %>
-			<li class="extra-categories hidden-item">
-				<span class="extra-categories-number"></span>
-				<span class="extra-categories-mobile-label hidden-item">Categories</span>
-			</li>
-		</ul>
-		<ul class="categories-vertical-list hidden-list">
-			<%= render partial: "categories_items" %>
-		</ul>
-		</div>
-	</div>
-	<div class="share-link">
-		<span class="share-link-white-front"></span>
-		<div class="share-icon">
-			<%= render partial: "layouts/share_svg" %>
-		</div>
-		<span class="share-label">Compartilhar</span>
-	</div>
-</div>
+<ul class="top-menu">
+	<li class="menu-icon more-btn"><%= render partial: "layouts/share_svg" %></li>
+	<li class="menu-icon share-btn"><%= render partial: "layouts/share_svg" %></li>
+	<li class="menu-icon close-btn"><%= render partial: "layouts/share_svg" %></li>
+</ul>
 
-<div class="plak <%= image_presence_class(@image_url) %>">
+<div id="plak" class="plak <%= image_presence_class(@image_url) %>">
 	<% if @image_url %>
 		<div class="plak-image">
 			<img src="<%= @image_url %>"></img>
+			<div class="categories">
+				<%= render partial: "categories_items" %>
+			</div>
 		</div>
 	<% end -%>
-
-	<div class="plak-content">
-		<h2 class="plak-title"><%= @poster.title %></h2>
-		<p class="plak-description"><%= @poster.description %></p>
-	</div>
 </div>

@@ -84,7 +84,7 @@ task set_categories: :environment do
 
 
   Poster.all.each do |poster|
-    poster.categories = categories.sample(Random.rand(categories.size+1))
+    poster.categories = categories.sample(6)
     poster.save!
   end
 end

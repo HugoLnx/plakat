@@ -1,9 +1,20 @@
-<% @poster.categories.each do |category| %>
-  <li class="category-item">
-    <a href="#">
-      <div class="category-front-shadow"></div>
-			<span class="category-label"><%= category.name %></span>
-      <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div>
-    </a>
-  </li>
-<% end %>
+<div class="categories-two-columns-list">
+	<ul class="list-first-column">
+		<% @poster.categories.first(3).each do |category| %>
+			<li class="category-item">
+				<a class="category-text" href="#">
+					<span class="category-label"><%= category.name %></span>
+				</a>
+			</li>
+		<% end %>
+	</ul>
+	<ul class="list-second-column">
+		<% (@poster.categories[3..-1] || []).each do |category| %>
+			<li class="category-item">
+				<a class="category-text" href="#">
+					<span class="category-label"><%= category.name %></span>
+				</a>
+			</li>
+		<% end %>
+	</ul>
+</div>

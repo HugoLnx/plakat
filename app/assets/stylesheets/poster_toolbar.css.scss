@@ -1,6 +1,7 @@
 /* POSITION */
 $toolbar_height: 56px;
 $toolbar_padding: 8px;
+$toolbar_total_height: $toolbar_height + ($toolbar_padding * 2);
 
 @mixin paper-shadow() {
 	@include box-shadow(0px 1px 4px 0 rgba(0, 0, 0, 0.37));
@@ -10,7 +11,7 @@ $toolbar_padding: 8px;
 
 .topbar {
 	width: 100%;
-	height: $toolbar_height + ($toolbar_padding * 2);
+	height: $toolbar_total_height;
 	padding: 8px;
 	box-sizing: border-box;
 	@include display-flex();
@@ -229,14 +230,26 @@ $toolbar_color: #e91e63;
 }
 
 /* MEDIA QUERIES */
-.topbar {
-	@media(min-width: 641px) {
-		.categories-vertical-list {
-			right: 0;
-		}
-	}
 
-	@media(max-width: 640px) {
+@media(min-width: 641px) {
+  .topbar:hover {
+    top: 0;
+    @include transition(top 500ms ease);
+  }
+
+  .topbar {
+    position: fixed;
+    top: 12px - $toolbar_total_height;
+    left: 0;
+    @include transition(top 500ms ease);
+    .categories-vertical-list {
+      right: 0;
+    }
+  }
+}
+
+@media(max-width: 640px) {
+  .topbar {
 		.categories-wrapper {
 			width: 100%;
 		}
@@ -255,9 +268,11 @@ $toolbar_color: #e91e63;
 			}
 		}
 	}
+}
 
 
-	@media(max-width: 800px) {
+@media(max-width: 800px) {
+  .topbar {
 		.share-link .share-label {
 			display: none;
 		}

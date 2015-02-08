@@ -1,3 +1,15 @@
+@mixin floating-box() {
+	display: inline-block;
+	padding: 8px;
+	margin: 4px;
+	@include border-radius(1px);
+	color: #ddd;
+	fill: #ddd;
+	background-color: rgba(0, 0, 0, 0.5);
+	@include box-shadow(0px 1px 4px 0 rgba(0, 0, 0, 0.37));
+	@include text-shadow(1px 1px 2px rgba(0, 0, 0, 0.6));
+}
+
 /* POSITIONING */
 html, body {
 	height: 100%;
@@ -5,67 +17,51 @@ html, body {
 }
 
 .plak {
-	overflow: hidden;
+	display: block;
   width: 100%;
+	height: 100%;
   box-sizing: border-box;
+	background-color: #000;
 
-  @media(max-width: 640px) {
-    .plak-image img {
-      width: 100%;
-    }
-  }
+	.plak-image {
+		box-sizing: border-box;
+	}
 
-  @media(min-width: 641px) {
-		position: fixed;
-		top: $toolbar_height + $toolbar_padding * 2;
-		left: 0;
-		height: 100%;
+
+	.plak-image img {
 		display: block;
+		box-sizing: border-box;
+	}
 
-    .plak-image {
-			float: left;
-			@include display-flex();
-			max-width: 50%;
+	&.portrait {
+		.plak-image {
 			height: 100%;
-			border-right: 1px solid #ddd;
-			box-sizing: border-box;
-			background-color: #fff;
+			@include display-flex();
 		}
 
-
-    .plak-image img {
+		.plak-image img {
 			width: 100%;
 			align-self: center;
-			margin-top: -72px;
-    }
-
-		.plak-content {
-			box-sizing: border-box;
-
-			.plak-title {
-				box-sizing: border-box;
-			}
-		}
-  }
-}
-
-.plak {
-	&.with-image {
-		background-color: #FFEFF3;
-		.plak-content {
-			overflow: hidden;
 		}
 	}
 
-	&.without-image {
-		.plak-content {
-			background-color: #FFEFF3;
-			width: 50%;
+	&.landscape {
+		.plak-image {
 			height: 100%;
-			min-height: 100%;
+		}
+
+
+		.plak-image img {
+			width: 100%;
 			margin: 0 auto;
-			border-left: 1px solid #ddd;
-			border-right: 1px solid #ddd;
+		}
+	}
+
+	.plak-content {
+		box-sizing: border-box;
+
+		.plak-title {
+			box-sizing: border-box;
 		}
 	}
 }
@@ -82,5 +78,82 @@ html, body {
 		font-weight: bold;
 		margin-top: 20px;
 		margin-bottom: 8px;
+	}
+}
+
+
+
+/* CATEGORIES */
+.plak {
+	&.landscape {
+		.categories {
+			position: fixed;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+		}
+	}
+
+	&.portrait {
+		.categories {
+			position: fixed;
+			bottom: 100px;
+			right: 0;
+			width: 100%;
+		}
+	}
+
+	.categories-two-columns-list {
+		display: inline-block;
+		width: 100%;
+
+		.category-item {
+			display: block;
+		}
+
+		.category-text {
+			font: 1.2em;
+			font-weight: bold;
+			@include floating-box();
+		}
+
+		.category-item a {
+			color: none;
+			text-decoration: none;
+		}
+	}
+
+	.list-first-column {
+		float: left;
+		text-align: left;
+	}
+
+	.list-second-column {
+		float: right;
+		text-align: right;
+	}
+}
+
+/* TOP MENU */
+.top-menu {
+	&.landscape {
+		position: fixed;
+		top: 0;
+		right: 0;
+	}
+
+	&.portrait {
+		position: fixed;
+		top: 100px;
+		right: 0;
+	}
+
+	.menu-icon {
+		display: inline-block;
+		width: 24px;
+		height: 24px;
+		padding: 8px;
+		margin: 4px;
+		@include floating-box();
 	}
 }
