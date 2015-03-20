@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
+  #devise_for :users
   resources  :posters,
     only: %w{index create show new},
     path: "plaks"
   resources  :categories, only: "index" 
+
+  get '/auth/:provider/callback', to: 'users#create'
+  get '/logout', to: 'users#logout'
+
+  resource :profile, only: :show
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
