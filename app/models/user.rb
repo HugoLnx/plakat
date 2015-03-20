@@ -1,3 +1,4 @@
+# TEM QUE TIRAR OS RESCUES DOS MÉTODOS, POR QUE VAI PARAR DE DISPARAR ERROS
 class User < ActiveRecord::Base
   has_many :posters 
   has_many :categories
