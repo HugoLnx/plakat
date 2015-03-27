@@ -12,6 +12,7 @@
  *
  *= require reset-meyer
  *= require_self
+ *= require poster_show
  */
 body{font-family: RobotoDraft, sans-serif;}
 

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get '/logout', to: 'users#logout'
 
   resource :profile, only: :show
+
+  get "/home" => "home#index"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

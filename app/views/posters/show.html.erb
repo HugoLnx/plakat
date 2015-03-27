@@ -1,12 +1,3 @@
-<% content_for :css do %>
-  <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en', media: 'all'%>
-  <%= stylesheet_link_tag 'poster_show', media: 'all', 'data-turbolinks-track' => true %>
-<% end %>
-
-<% content_for :js do %>
-  <%= javascript_include_tag 'poster_show' %>
-<% end %>
-
 <% content_for :metatags do %>
 	<!-- for Facebook -->          
 	<meta property="og:title" content="<%= @poster.title %>" />
@@ -16,36 +7,7 @@
 	<meta property="og:description" content="<%= @poster.description %>" />
 <% end %>
 
-<div class="topbar">
-	<div class="back-home">
-		<div class="plakat-logo">
-			<a href="/">
-				<%= render partial: "layouts/plakat_svg" %>
-			</a>
-		</div>
-	</div>
-	<div class="categories">
-		<div class="categories-wrapper">
-		<ul class="categories-horizontal-list">
-			<%= render partial: "categories_items" %>
-			<li class="extra-categories hidden-item">
-				<span class="extra-categories-number"></span>
-				<span class="extra-categories-mobile-label hidden-item">Categories</span>
-			</li>
-		</ul>
-		<ul class="categories-vertical-list hidden-list">
-			<%= render partial: "categories_items" %>
-		</ul>
-		</div>
-	</div>
-	<div class="share-link">
-		<span class="share-link-white-front"></span>
-		<div class="share-icon">
-			<%= render partial: "layouts/share_svg" %>
-		</div>
-		<span class="share-label">Compartilhar</span>
-	</div>
-</div>
+<%= render partial: "layouts/toolbar" %>
 
 <div class="plak <%= image_presence_class(@image_url) %>">
 	<% if @image_url %>

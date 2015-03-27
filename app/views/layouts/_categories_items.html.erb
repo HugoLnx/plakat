@@ -1,0 +1,9 @@
+<% @poster.categories.each do |category| %>
+  <li class="category-item">
+    <a href="#">
+      <div class="category-front-shadow"></div>
+			<span class="category-label"><%= category.name %></span>
+      <div class="hyperlink-icon"><%= render partial: "layouts/hyperlink_svg" %></div>
+    </a>
+  </li>
+<% end %>

@@ -1,0 +1,32 @@
+<div class="topbar">
+	<div class="back-home">
+		<div class="plakat-logo">
+			<a href="/">
+				<%= render partial: "layouts/plakat_svg" %>
+			</a>
+		</div>
+	</div>
+	<div class="categories">
+	<% if @poster %>
+		<div class="categories-wrapper">
+		<ul class="categories-horizontal-list">
+			<%= render partial: "layouts/categories_items" %>
+			<li class="extra-categories hidden-item">
+				<span class="extra-categories-number"></span>
+				<span class="extra-categories-mobile-label hidden-item">Categories</span>
+			</li>
+		</ul>
+		<ul class="categories-vertical-list hidden-list">
+			<%= render partial: "layouts/categories_items" %>
+		</ul>
+		</div>
+	<% end %> 	
+	</div>
+	<div class="share-link">
+		<span class="share-link-white-front"></span>
+		<div class="share-icon">
+			<%= render partial: "layouts/share_svg" %>
+		</div>
+		<span class="share-label">Compartilhar</span>
+	</div>
+</div>
