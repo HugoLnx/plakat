@@ -8,8 +8,10 @@
 			<div class="item-plak-content">
 				<h2><%=poster.title%></h2>
 				<div class="item-plak-desc"><%=poster.description%></div>
-				<h6><b>Data do evento: </b><%=poster.date_event.strftime('%d/%m/%Y')%></h6>
-			</div> 			
+				<% if poster.date_event %>
+					<h6><b>Data do evento: </b><%=poster.date_event.strftime('%d/%m/%Y')%></h6>
+				<% end -%>
+			</div>
 		</div>
 		</a>
 	<%end%>
