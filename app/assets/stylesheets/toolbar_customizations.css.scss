@@ -1,0 +1,21 @@
+/* Login Toolbar  */
+.special-btn {
+  // POSITIONING
+  &.login-btn {
+    .btn-icon {
+      width: 36px;
+      img {
+        width: 36px;
+        height: 36px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  // DECORATION
+  &.login-btn {
+    .btn-label {
+      font-size: 0.9em;
+    }
+  }
+}

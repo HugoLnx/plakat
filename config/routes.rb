@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources  :categories, only: "index" 
 
   get '/auth/:provider/callback', to: 'users#create'
-  get '/logout', to: 'users#logout'
+  get '/logout', to: 'users#logout', as: :logout
 
   resource :profile, only: :show
 

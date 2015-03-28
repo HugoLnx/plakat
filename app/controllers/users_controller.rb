@@ -3,17 +3,17 @@ class UsersController < ApplicationController
     user = User.from_omniauth(auth_hash)
     if user.save
       self.current_user = user.id
-      redirect_to "/", notice: "Você está conectado."
+      redirect_to home_path, notice: "Você está conectado."
     else
       logger.error %Q[Não conseguiu logar o usuário: #{user.inspect}
       Ocorreram os seguintes erros: #{user.errors.inspect}]
-      redirect_to "/", notice: "Falha ao conectar."
+      redirect_to home_path, notice: "Falha ao conectar."
     end
   end
 
   def logout
     self.current_user = nil
-    redirect_to "/"
+    redirect_to home_path
   end
 
 private

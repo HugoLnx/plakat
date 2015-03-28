@@ -14,6 +14,7 @@
  *= require_self
  *= require poster_show
  *= require home_show
+ *= require toolbar_customizations
  */
 body{font-family: RobotoDraft, sans-serif;}
 @import "./mixins";

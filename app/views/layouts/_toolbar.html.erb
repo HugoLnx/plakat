@@ -8,25 +8,25 @@
 	</div>
 	<div class="categories">
 	<% if @poster %>
-		<div class="categories-wrapper">
-		<ul class="categories-horizontal-list">
+		<div class="list-wrapper">
+		<ul class="horizontal-list categories-horizontal-list">
 			<%= render partial: "layouts/categories_items" %>
-			<li class="extra-categories hidden-item">
+			<li class="extra-categories list-item open-list hidden-item">
 				<span class="extra-categories-number"></span>
 				<span class="extra-categories-mobile-label hidden-item">Categories</span>
 			</li>
 		</ul>
-		<ul class="categories-vertical-list hidden-list">
+		<ul class="vertical-list categories-vertical-list hidden-list">
 			<%= render partial: "layouts/categories_items" %>
 		</ul>
 		</div>
 	<% end %> 	
 	</div>
-	<div class="share-link">
-		<span class="share-link-white-front"></span>
-		<div class="share-icon">
+	<div class="special-btn share-btn">
+		<span class="special-btn-white-front"></span>
+		<div class="btn-icon">
 			<%= render partial: "layouts/share_svg" %>
 		</div>
-		<span class="share-label">Compartilhar</span>
+		<span class="btn-label">Compartilhar</span>
 	</div>
 </div>

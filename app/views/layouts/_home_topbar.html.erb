@@ -1,0 +1,59 @@
+<div class="topbar">
+	<div class="back-home">
+		<div class="plakat-logo">
+			<a href="/">
+				<%= render partial: "layouts/plakat_svg" %>
+			</a>
+		</div>
+	</div>
+	<div class="categories">
+	<% if @poster %>
+		<div class="list-wrapper">
+		<ul class="horizontal-list">
+			<%= render partial: "layouts/categories_items" %>
+			<li class="extra-categories hidden-item">
+				<span class="extra-categories-number"></span>
+				<span class="extra-categories-mobile-label hidden-item">Categories</span>
+			</li>
+		</ul>
+		<ul class="vertical-list hidden-list">
+			<%= render partial: "layouts/categories_items" %>
+		</ul>
+		</div>
+	<% end %> 	
+	</div>
+	<% if logged_in? %>
+		<div class="list-wrapper">
+			<div class="login-btn special-btn open-list">
+				<span class="special-btn-white-front"></span>
+				<div class="btn-icon">
+					<img src="<%= current_user.image %>">
+				</div>
+				<span class="btn-label"><%= current_user.name.split(" ").first %></span>
+			</div>
+			<ul class="logged-menu vertical-list hidden-list">
+				<li class="menu-option list-item">
+					<a href="<%= new_poster_path %>">
+						<div class="list-item-front-shadow"></div>
+						<span class="list-item-label">Criar Plak</span>
+					</a>
+				</li>
+				<li class="menu-option list-item">
+					<a href="<%= logout_path %>">
+						<div class="list-item-front-shadow"></div>
+						<span class="list-item-label">Logout</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	<% else %>
+		<div class="special-btn login-btn">
+			<a class="btn-link" href="/auth/facebook"></a>
+			<span class="special-btn-white-front"></span>
+			<div class="btn-icon">
+				<%= render partial: "layouts/login_svg" %>
+			</div>
+			<span class="btn-label">Login</span>
+		</div>
+	<% end %>
+</div>
