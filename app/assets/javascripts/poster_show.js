@@ -4,10 +4,12 @@
 
 (function() {
   window.addEventListener("resize", function() {
+    PLAKAT.ToolbarCategoriesAdjuster &&
     PLAKAT.ToolbarCategoriesAdjuster.adjustCategoriesToolbar();
   });
 
   window.addEventListener("load", function() {
+    PLAKAT.ToolbarCategoriesAdjuster &&
     PLAKAT.ToolbarCategoriesAdjuster.adjustCategoriesToolbar();
   });
 

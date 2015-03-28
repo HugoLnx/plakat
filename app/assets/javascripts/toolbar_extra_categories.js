@@ -20,7 +20,7 @@
     }
 
     function setOpenOnClickEvent() {
-      openLink.addEventListener("click", openDropdown);
+      openLink && openLink.addEventListener("click", openDropdown);
     }
 
     setOpenOnClickEvent();

@@ -58,7 +58,6 @@ class PostersController < ApplicationController
 
   def new
     @poster = Poster.new
-    render :new, layout: false
   end
 
 private

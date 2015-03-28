@@ -1,0 +1,28 @@
+$border_color: #d9d9d9;
+
+.media-controller{
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 30px;
+  background-color: lighten($border_color, 12%);
+}
+.poster-publish{
+  border: solid 1px $border_color;
+  padding: 20px;
+  font-size: 1.2em;
+}
+.poster-publish input, .poster-publish textarea, .poster-publish select, button{
+  border: solid 1px $border_color;
+  width: 98%;
+  padding: 1%;
+  margin-bottom: 10px;
+}
+.poster-publish textarea{
+  height: 150px;
+}
+button{
+  background: #000;
+  max-width: 200px;
+  color: #fff;
+  text-align: center;
+}

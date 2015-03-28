@@ -1,70 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
+<%= render partial: "layouts/home_topbar" %>
 
-<meta charset="UTF-8">
-
-<title>Plakat</title>
-
-<link href='https://fonts.googleapis.com/css?family=Roboto:300,900,400' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="/css/style.css" />
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/ui.js"></script>
-  <%= csrf_meta_tags %>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" ng-app="plakat.controllers">
-
-<header>
-    <div id="statusBar">
-        <div class="media-container">
-            <div id="logo">
-                <h1><a href="index.html"><img src="/img/logo.svg" alt="Plakat" /></a></h1>
-            </div>
-        </div>
-    </div>
-</header>
-<style type="text/css">
-    .media-controller{
-        max-width: 900px;
-        margin: 0 auto;
-        margin-top: 120px;
-    }
-    .poster-publish{
-        border: solid 1px #eaeaea;
-        padding: 20px;
-        font-size: 1.2em;
-    }
-    .poster-publish input, .poster-publish textarea, .poster-publish select, button{
-        border: solid 1px #eaeaea;
-        width: 98%;
-        padding: 1%;
-        margin-bottom: 10px;
-    }
-    .poster-publish textarea{
-        height: 150px;
-    }
-    button{
-        background: #000;
-        max-width: 200px;
-        color: #fff;
-        text-align: center;
-    }
-</style>
-<script type="text/javascript">
-    $("#sub-poster").click(function(){
-        if ($("#title-poster").val()=="") {
-            alert("Informe o título do poster")
-            return false
-        }
-        if ($("#desc-poster").val()=="") {
-            return false
-        }
-        $("#sub-poster").submit()
-    });
-</script>
 <div id="posters">
     <div class="media-controller">
         <div class="poster-publish">
@@ -77,7 +12,3 @@
         </div>
     </div>
 </div>
-
-</body>
-
-</html>
