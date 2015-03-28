@@ -1,14 +1,13 @@
 <%= render partial: "layouts/home_topbar" %>
 
-<div id="posters">
-    <div class="media-controller">
-        <div class="poster-publish">
-          <%= form_for @poster, html: {multipart: true, id: "frm-pub-poster"} do |f| %>
-              <%= f.text_field :title, placeholder: "Nome do cartaz", id: "title-poster" %>
-              <%= f.text_area :description, placeholder: "Informe uma descrição para o cartaz, se precisar user #, vai auxiliar as procuras.", id: "description-poster" %>
-              <%= f.file_field :ref_imagem, id: "file-poster" %>
-              <button id="sub-poster" name="sub-poster">Publicar</button>
-          <% end %>
-        </div>
-    </div>
+<div class="new-poster">
+    <%= form_for @poster, html: {multipart: true, id: "frm-pub-poster"} do |f| %>
+        <%= f.text_field :title, placeholder: "Nome do cartaz", id: "title-poster", class: "span5" %>
+        <%= f.collection_select :id, @categories, :id, :name, {:include_blank => '-- Selecione a categoria --'}, class: "span5", name: "poster[category_id]", id: "category_id" %>
+        <%= f.text_area :description, placeholder: "Aqui você pode falar um pouco sobre seu plak, aquilo que você quer divulgar, comunicar, vender... #plakat #plak #info #engenharia #puc", id: "description-poster", class: "span10" %>
+        <label class="span2">Data do evento: </label>
+        <%= f.date_field :date_event, placeholder: "01/01/2015", id: "date-event-poster", class: "span3" %>
+        <%= f.file_field :ref_imagem, id: "file-poster" , class: "span5" %>
+        <button id="sub-poster" name="sub-poster">Publicar</button>
+    <% end %>
 </div>

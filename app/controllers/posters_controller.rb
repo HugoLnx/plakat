@@ -21,10 +21,10 @@ class PostersController < ApplicationController
     poster.date_expiration = Time.now + 30.days
     poster.disabled = false
     respond_to do |format|
-      if poster.save
+      if poster.save!
         #PosterCreationNotifier.notify(email: params[:email], poster: poster).deliver!
         format.json{ head :ok }
-        format.html{redirect_to "/"}
+        format.html{redirect_to "/plaks/#{poster.id}"}
       else
         @errors = poster.errors
         format.json{ render "errors" }
@@ -57,7 +57,8 @@ class PostersController < ApplicationController
   end
 
   def new
-    @poster = Poster.new
+    @poster     = Poster.new
+    @categories = Category.all
   end
 
 private

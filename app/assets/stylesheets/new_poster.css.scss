@@ -1,28 +1,50 @@
 $border_color: #d9d9d9;
 
-.media-controller{
+.new-poster{
   max-width: 900px;
+  border: solid 1px #333;
+  background: #eaeaea;
   margin: 0 auto;
-  margin-top: 30px;
-  background-color: lighten($border_color, 12%);
-}
-.poster-publish{
-  border: solid 1px $border_color;
-  padding: 20px;
-  font-size: 1.2em;
-}
-.poster-publish input, .poster-publish textarea, .poster-publish select, button{
-  border: solid 1px $border_color;
-  width: 98%;
-  padding: 1%;
-  margin-bottom: 10px;
-}
-.poster-publish textarea{
-  height: 150px;
-}
-button{
-  background: #000;
-  max-width: 200px;
-  color: #fff;
-  text-align: center;
+  margin-top: 10px;
+  form{
+    display: grid;
+  }
+  input, select, textarea, button, label{
+    height: 30px;
+    font-size: 1.2em;
+    margin: 5px;
+  }
+  textarea{
+    min-height: 200px;
+  }
+  .span1{
+    width: 8%;
+  }
+  .span9{
+    width: 88%;
+  }
+  .span2{
+    width: 18%;
+  }
+  .span8{
+    width: 78%;
+  }
+  .span7{
+    width: 68%;
+  }
+  .span3{
+    width: 28%;
+  }
+  .span4{
+    width: 38%;
+  }
+  .span6{
+    width: 58%;
+  }
+  .span5{
+    width: 48%;
+  }
+  .span10{
+    width: 98%;
+  }
 }
