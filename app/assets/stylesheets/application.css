@@ -13,13 +13,8 @@
  *= require reset-meyer
  *= require_self
  *= require poster_show
+ *= require home_show
  */
 body{font-family: RobotoDraft, sans-serif;}
-
-@mixin user-select($value) {
-  -webkit-user-select: $value;
-     -moz-user-select: $value;
-      -ms-user-select: $value;
-          user-select: $value;
-}
+@import "./mixins";
 

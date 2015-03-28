@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require poster_show
+//= require masonry_min
+//= require masonry_func

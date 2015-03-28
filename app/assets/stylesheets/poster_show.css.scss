@@ -1,19 +1,4 @@
-@import "compass";
-@import "compass/css3";
-
-@mixin flex($value) {
-	-ms-flex: $value;
-	-webkit-flex: $value;
-	-moz-flex: $value;
-	flex: $value;
-}
-
-@mixin display-flex() {
-	-ms-display: flex;
-	-webkit-display: flex;
-	-moz-display: flex;
-	display: flex;
-}
+@import "./mixins";
 
 @import "./poster_toolbar";
 @import "./poster_data";

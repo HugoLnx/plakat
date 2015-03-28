@@ -1,0 +1,34 @@
+@import "./mixins";
+
+#container-plakat{
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 20px;
+	display: flex;
+}
+.item-plak {
+	background: #fff;
+	line-height: 150%; 
+	width: 300px; 
+	min-height: 100px;
+	@include paper-shadow();
+	margin: 1%;
+	img{
+		vertical-align: middle;
+	}
+	.item-plak-content{
+		padding: 15px;
+		max-width: 100%;
+		h2{
+			font-weight: bold;
+			font-size: 1.6em;
+			margin-bottom: 10px;
+		}
+		.item-plak-desc{
+			font-size: 1.1em;
+			word-wrap: break-word;
+			line-height: 120%;
+		}
+	}
+}
+

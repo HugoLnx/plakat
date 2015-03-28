@@ -1,1 +1,13 @@
 <%= render partial: "layouts/toolbar" %>
+
+<div id="container-plakat">
+	<%@posters.each do |poster|%>
+		<div class="item-plak">
+			<img src="<%=poster.ref_imagem%>">
+			<div class="item-plak-content">
+				<h2><%=poster.title%></h2>
+				<div class="item-plak-desc"><%=poster.description%></div>
+			</div> 			
+		</div>
+	<%end%>
+</div>

@@ -1,0 +1,29 @@
+@import "compass";
+@import "compass/css3";
+
+@mixin paper-shadow() {
+	@include box-shadow(0px 1px 4px 0 rgba(0, 0, 0, 0.37));
+	@include border-radius(1px);
+	background-color: #fff;
+}
+
+@mixin user-select($value) {
+  -webkit-user-select: $value;
+     -moz-user-select: $value;
+      -ms-user-select: $value;
+          user-select: $value;
+}
+
+@mixin flex($value) {
+	-ms-flex: $value;
+	-webkit-flex: $value;
+	-moz-flex: $value;
+	flex: $value;
+}
+
+@mixin display-flex() {
+	-ms-display: flex;
+	-webkit-display: flex;
+	-moz-display: flex;
+	display: flex;
+}

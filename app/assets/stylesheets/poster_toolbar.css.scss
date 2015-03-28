@@ -2,12 +2,6 @@
 $toolbar_height: 56px;
 $toolbar_padding: 8px;
 
-@mixin paper-shadow() {
-	@include box-shadow(0px 1px 4px 0 rgba(0, 0, 0, 0.37));
-	@include border-radius(1px);
-	background-color: #fff;
-}
-
 .topbar {
 	width: 100%;
 	height: $toolbar_height + ($toolbar_padding * 2);
