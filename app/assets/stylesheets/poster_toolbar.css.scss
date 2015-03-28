@@ -257,18 +257,18 @@ $toolbar_color: #e91e63;
 	@media(max-width: 640px) {
 		.categories .list-wrapper {
 			width: 100%;
+
+      .horizontal-list {
+        .category-item {
+          display: none;
+        }
+      }
 		}
 
 		.vertical-list {
 			left: 0;
 
 			&.hidden-list {
-				display: none;
-			}
-		}
-
-		.horizontal-list {
-			.list-item {
 				display: none;
 			}
 		}
