@@ -7,37 +7,42 @@
 		</div>
 	</div>
 	<div class="topbar-middle">
+    <% if @categories %>
 		<div class="categories-btn-area list-wrapper">
 			<div class="special-btn categories-btn open-list">
 				<span class="special-btn-white-front"></span>
 				<div class="btn-icon">
 					<%= render partial: "layouts/menu_svg" %>
 				</div>
-				<span class="btn-label">Categorias</span>
+        <span class="btn-label"><%= @category.nil? ? "Categorias" : @category.name %></span>
 			</div>
 			<ul class="all-categories-list vertical-list hidden-list">
-				<li class="list-item">
-					<a href="$">
-						<div class="list-item-front-shadow"></div>
-						<span class="list-item-label">Categoria 1</span>
-					</a>
-				</li>
-				<li class="list-item">
-					<a href="#">
-						<div class="list-item-front-shadow"></div>
-						<span class="list-item-label">Categoria 2</span>
-					</a>
-				</li>
+        <li class="list-item">
+          <a href="<%= home_path %>">
+            <div class="list-item-front-shadow"></div>
+            <span class="list-item-label">Todas</span>
+          </a>
+        </li>
+        <% @categories.each do |category| %>
+          <li class="list-item">
+            <a href="<%= home_path(category: category.name) %>">
+              <div class="list-item-front-shadow"></div>
+              <span class="list-item-label"><%= category.name %></span>
+            </a>
+          </li>
+        <% end -%>
 			</ul>
 		</div>
 		<div class="search-area">
-			<div class="pretty-search">
+			<%= form_tag home_path, method: "GET", class: "pretty-search" do %>
 				<div class="svg-btn">
 					<%= render partial: "layouts/search_svg" %>
 				</div>
-				<input class="pretty-search-input" type="text" placeholder="Buscar plaks" />
-			</div>
+        <input class="pretty-search-input" name="term" type="text" value="<%=@term%>" placeholder="Buscar plaks" />
+        <%= hidden_field_tag("category", @category.name) unless @category.nil? %>
+      <% end %>
 		</div>
+  <% end %>
 	</div>
 	<% if logged_in? %>
 		<div class="list-wrapper">
