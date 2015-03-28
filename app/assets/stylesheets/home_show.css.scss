@@ -5,6 +5,10 @@
 	margin: 0 auto;
 	margin-top: 20px;
 	display: flex;
+	a{
+		text-decoration: none;
+		color: #333333;
+	}
 }
 .item-plak {
 	background: #fff;
@@ -28,6 +32,10 @@
 			font-size: 1.1em;
 			word-wrap: break-word;
 			line-height: 120%;
+		}
+		h6{
+			font-size: 0.8em;
+			margin-top: 10px;
 		}
 	}
 }

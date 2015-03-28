@@ -2,12 +2,15 @@
 
 <div id="container-plakat">
 	<%@posters.each do |poster|%>
+		<a href="/plaks/<%=poster.id%>">
 		<div class="item-plak">
 			<img src="<%=poster.ref_imagem%>">
 			<div class="item-plak-content">
 				<h2><%=poster.title%></h2>
 				<div class="item-plak-desc"><%=poster.description%></div>
+				<h6><b>Data do evento: </b><%=poster.date_event.strftime('%d/%m/%Y')%></h6>
 			</div> 			
 		</div>
+		</a>
 	<%end%>
 </div>
