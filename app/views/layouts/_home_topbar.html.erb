@@ -6,21 +6,38 @@
 			</a>
 		</div>
 	</div>
-	<div class="categories">
-	<% if @poster %>
-		<div class="list-wrapper">
-		<ul class="horizontal-list">
-			<%= render partial: "layouts/categories_items" %>
-			<li class="extra-categories hidden-item">
-				<span class="extra-categories-number"></span>
-				<span class="extra-categories-mobile-label hidden-item">Categories</span>
-			</li>
-		</ul>
-		<ul class="vertical-list hidden-list">
-			<%= render partial: "layouts/categories_items" %>
-		</ul>
+	<div class="topbar-middle">
+		<div class="categories-btn-area list-wrapper">
+			<div class="special-btn categories-btn open-list">
+				<span class="special-btn-white-front"></span>
+				<div class="btn-icon">
+					<%= render partial: "layouts/menu_svg" %>
+				</div>
+				<span class="btn-label">Categorias</span>
+			</div>
+			<ul class="all-categories-list vertical-list hidden-list">
+				<li class="list-item">
+					<a href="$">
+						<div class="list-item-front-shadow"></div>
+						<span class="list-item-label">Categoria 1</span>
+					</a>
+				</li>
+				<li class="list-item">
+					<a href="#">
+						<div class="list-item-front-shadow"></div>
+						<span class="list-item-label">Categoria 2</span>
+					</a>
+				</li>
+			</ul>
 		</div>
-	<% end %> 	
+		<div class="search-area">
+			<div class="pretty-search">
+				<div class="svg-btn">
+					<%= render partial: "layouts/search_svg" %>
+				</div>
+				<input class="pretty-search-input" type="text" placeholder="Buscar plaks" />
+			</div>
+		</div>
 	</div>
 	<% if logged_in? %>
 		<div class="list-wrapper">
